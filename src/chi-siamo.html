@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La storia di Cose Vintage: come nasce la passione per l'abbigliamento vintage premium dai mercatini parigini.">
+
+  <title>Chi Siamo | Cose Vintage</title>
+
+  <link rel="canonical" href="https://cosevintage.com/chi-siamo.html">
+
+  <meta property="og:title" content="Chi Siamo | Cose Vintage">
+  <meta property="og:description" content="La storia di Cose Vintage: come nasce la passione per l'abbigliamento vintage premium.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://cdn.snipcart.com">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+
+  <style>
+    .about-hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      background: var(--color-parchment);
+      overflow: hidden;
+    }
+
+    .about-hero__bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+    }
+
+    @media (max-width: 1023px) {
+      .about-hero__bg {
+        width: 100%;
+        opacity: 0.3;
+      }
+    }
+
+    .about-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+    }
+
+    .about-hero__subtitle {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: var(--space-4);
+    }
+
+    .about-hero__title {
+      font-size: var(--text-5xl);
+      margin-bottom: var(--space-6);
+      line-height: var(--leading-tight);
+    }
+
+    @media (max-width: 767px) {
+      .about-hero__title {
+        font-size: var(--text-4xl);
+      }
+    }
+
+    .about-hero__intro {
+      font-size: var(--text-xl);
+      color: var(--color-ink-light);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Story sections */
+    .story-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    @media (max-width: 1023px) {
+      .story-block {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    .story-block--reverse .story-block__image {
+      order: 2;
+    }
+
+    @media (max-width: 1023px) {
+      .story-block--reverse .story-block__image {
+        order: 0;
+      }
+    }
+
+    .story-block__image {
+      position: relative;
+    }
+
+    .story-block__image img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-vintage);
+    }
+
+    .story-block__image::before {
+      content: '';
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      right: calc(var(--space-4) * -1);
+      bottom: calc(var(--space-4) * -1);
+      border: 2px solid var(--color-gold-light);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+    }
+
+    .story-block__content h2 {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-6);
+    }
+
+    .story-block__content p {
+      font-size: var(--text-lg);
+      color: var(--color-ink-light);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+
+    @media (max-width: 767px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .value-card {
+      text-align: center;
+      padding: var(--space-8);
+      background: var(--color-cream);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .value-card__icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-5);
+      background: var(--color-sage-muted);
+      border-radius: var(--radius-full);
+      color: var(--color-sage-dark);
+    }
+
+    .value-card__icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .value-card h3 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .value-card p {
+      color: var(--color-ink-light);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Quote section */
+    .quote-section {
+      background: var(--color-parchment);
+      padding: var(--space-16);
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-section::before,
+    .quote-section::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid var(--color-gold-light);
+    }
+
+    .quote-section::before {
+      top: var(--space-8);
+      left: var(--space-8);
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .quote-section::after {
+      bottom: var(--space-8);
+      right: var(--space-8);
+      border-left: none;
+      border-top: none;
+    }
+
+    .quote-section blockquote {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-style: italic;
+      color: var(--color-ink);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: var(--leading-snug);
+    }
+
+    @media (max-width: 767px) {
+      .quote-section blockquote {
+        font-size: var(--text-2xl);
+      }
+
+      .quote-section {
+        padding: var(--space-10);
+      }
+    }
+
+    .quote-section cite {
+      display: block;
+      margin-top: var(--space-6);
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      font-style: normal;
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-ink-faded);
+    }
+
+    /* CTA section */
+    .cta-section {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      margin-bottom: var(--space-4);
+    }
+
+    .cta-section p {
+      color: var(--color-ink-light);
+      margin-bottom: var(--space-8);
+    }
+
+    /* Mobile nav */
+    @media (max-width: 767px) {
+      .header__nav.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-cream);
+        padding: var(--space-6);
+        border-bottom: var(--border-thin);
+        box-shadow: var(--shadow-lg);
+      }
+    }
+
+    .header--scrolled {
+      box-shadow: var(--shadow-md);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="header__logo">Cose <span>Vintage</span></a>
+
+        <nav class="header__nav" id="main-nav">
+          <a href="/shop.html" class="header__nav-link">Shop</a>
+          <a href="/shop.html?filter=nuovi" class="header__nav-link">Nuovi Arrivi</a>
+          <a href="/chi-siamo.html" class="header__nav-link active">Chi Siamo</a>
+          <a href="/contatti.html" class="header__nav-link">Contatti</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="btn btn-icon btn-ghost snipcart-customer-signin" aria-label="Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-ghost header__cart snipcart-checkout" aria-label="Carrello">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span class="header__cart-count snipcart-items-count" style="display: none;">0</span>
+          </button>
+          <button class="header__menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="about-hero">
+      <div class="about-hero__bg">
+        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop" alt="Mercatino vintage" loading="eager">
+      </div>
+      <div class="container">
+        <div class="about-hero__content">
+          <p class="about-hero__subtitle">La Nostra Storia</p>
+          <h1 class="about-hero__title">Dai mercatini di Parigi al tuo armadio</h1>
+          <p class="about-hero__intro">
+            Ogni domenica mattina, mentre la citta' si sveglia, noi siamo gia' tra le bancarelle
+            alla ricerca di pezzi che abbiano un'anima.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Block 1 -->
+    <section class="section">
+      <div class="container">
+        <div class="story-block animate-on-scroll">
+          <div class="story-block__image">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=700&fit=crop" alt="Selezione di capi vintage" loading="lazy">
+          </div>
+          <div class="story-block__content">
+            <h2>Come e' Nato Tutto</h2>
+            <p>
+              Cose Vintage nasce da una passione che ha radici lontane: l'amore per i capi
+              che raccontano storie attraverso le loro cuciture, i loro tessuti, le loro
+              imperfezioni perfette.
+            </p>
+            <p>
+              Tutto e' iniziato nei mercatini delle pulci di Porte de Clignancourt a Parigi,
+              dove ogni bancarella nasconde potenziali tesori. Li' abbiamo imparato a
+              riconoscere la qualita' autentica, quella che non si trova piu' nella moda
+              di oggi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+      <blockquote>
+        "La moda passa, lo stile resta. E noi cerchiamo pezzi che abbiano entrambi."
+      </blockquote>
+      <cite>La filosofia di Cose Vintage</cite>
+    </section>
+
+    <!-- Story Block 2 -->
+    <section class="section">
+      <div class="container">
+        <div class="story-block story-block--reverse animate-on-scroll">
+          <div class="story-block__image">
+            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&h=700&fit=crop" alt="Abbigliamento vintage di qualita'" loading="lazy">
+          </div>
+          <div class="story-block__content">
+            <h2>La Nostra Selezione</h2>
+            <p>
+              Ogni pezzo che entra nella nostra collezione passa attraverso un processo
+              di selezione rigoroso. Non cerchiamo solo capi vintage, cerchiamo capi
+              che abbiano qualcosa da dire.
+            </p>
+            <p>
+              Guardiamo la qualita' dei tessuti, la fattura delle cuciture, la storia
+              del brand. Ma soprattutto, cerchiamo quella scintilla che rende un capo
+              speciale, quel non-so-che che fa girare la testa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section bg-parchment">
+      <div class="container">
+        <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-12);">I Nostri Valori</h2>
+
+        <div class="values-grid">
+          <div class="value-card animate-on-scroll">
+            <div class="value-card__icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3>Qualita' Autentica</h3>
+            <p>
+              Solo capi in condizioni eccellenti, selezionati personalmente per la
+              loro qualita' costruttiva e i materiali pregiati.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-card__icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4"/>
+                <path d="M12 8h.01"/>
+              </svg>
+            </div>
+            <h3>Trasparenza Totale</h3>
+            <p>
+              Ogni capo e' descritto con precisione: epoca, provenienza, condizioni,
+              misure reali. Nessuna sorpresa, solo certezze.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-card__icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Moda Sostenibile</h3>
+            <p>
+              Ogni capo vintage e' una scelta ecologica. Riutilizzare e' il modo
+              piu' elegante di rispettare il pianeta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Block 3 -->
+    <section class="section">
+      <div class="container">
+        <div class="story-block animate-on-scroll">
+          <div class="story-block__image">
+            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&h=700&fit=crop" alt="Accessori vintage" loading="lazy">
+          </div>
+          <div class="story-block__content">
+            <h2>Per Chi Cerca l'Unicita'</h2>
+            <p>
+              Cose Vintage e' per chi non si accontenta di cio' che si trova ovunque.
+              Per chi vuole entrare in una stanza ed essere l'unica persona con quel capo.
+              Per chi apprezza la storia dietro ogni pezzo.
+            </p>
+            <p>
+              I nostri clienti sono persone che hanno sviluppato un occhio per la qualita',
+              che sanno riconoscere un taglio impeccabile, un tessuto pregiato.
+              Persone che preferiscono pochi pezzi eccezionali a tanti mediocri.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-section animate-on-scroll">
+          <h2>Pronto a Scoprire il Tuo Prossimo Pezzo Unico?</h2>
+          <p>
+            Esplora la nostra collezione e trova capi che diventeranno i tuoi preferiti
+            per anni a venire.
+          </p>
+          <a href="/shop.html" class="btn btn-primary btn-lg">Esplora la Collezione</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Cose Vintage</p>
+          <p class="footer__tagline">"Ogni pezzo ha una storia"</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Shop</h4>
+          <ul class="footer__links">
+            <li><a href="/shop.html">Tutti i Prodotti</a></li>
+            <li><a href="/shop.html?categoria=giacche">Giacche</a></li>
+            <li><a href="/shop.html?categoria=vestiti">Vestiti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Info</h4>
+          <ul class="footer__links">
+            <li><a href="/chi-siamo.html">Chi Siamo</a></li>
+            <li><a href="/contatti.html">Contatti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legale</h4>
+          <ul class="footer__links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Cose Vintage.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/cosevintage" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Snipcart -->
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

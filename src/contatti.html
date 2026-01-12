@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contatta Cose Vintage per informazioni sui prodotti, ordini o collaborazioni. Siamo qui per aiutarti.">
+
+  <title>Contatti | Cose Vintage</title>
+
+  <link rel="canonical" href="https://cosevintage.com/contatti.html">
+
+  <meta property="og:title" content="Contatti | Cose Vintage">
+  <meta property="og:description" content="Contatta Cose Vintage per informazioni sui prodotti, ordini o collaborazioni.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://cdn.snipcart.com">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+    }
+
+    @media (max-width: 1023px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    .contact-info {
+      padding: var(--space-8);
+      background: var(--color-parchment);
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      width: 40px;
+      height: 40px;
+      border-top: 2px solid var(--color-gold-light);
+      border-left: 2px solid var(--color-gold-light);
+    }
+
+    .contact-info::after {
+      content: '';
+      position: absolute;
+      bottom: var(--space-4);
+      right: var(--space-4);
+      width: 40px;
+      height: 40px;
+      border-bottom: 2px solid var(--color-gold-light);
+      border-right: 2px solid var(--color-gold-light);
+    }
+
+    .contact-info h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-info p {
+      color: var(--color-ink-light);
+      margin-bottom: var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-item__icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-sage-muted);
+      border-radius: var(--radius-full);
+      flex-shrink: 0;
+    }
+
+    .contact-item__icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-sage-dark);
+    }
+
+    .contact-item__content {
+      flex: 1;
+    }
+
+    .contact-item__label {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-ink);
+      margin-bottom: var(--space-1);
+    }
+
+    .contact-item__value {
+      color: var(--color-ink-light);
+      font-size: var(--text-sm);
+    }
+
+    .contact-item__value a {
+      color: var(--color-terracotta);
+    }
+
+    /* Social links in contact */
+    .contact-social {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+      padding-top: var(--space-8);
+      border-top: var(--border-thin);
+    }
+
+    .contact-social a {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-cream);
+      border-radius: var(--radius-full);
+      color: var(--color-ink-light);
+      transition: all var(--transition-fast);
+    }
+
+    .contact-social a:hover {
+      background: var(--color-sage);
+      color: var(--color-cream);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--color-cream);
+      padding: var(--space-8);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-form h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .contact-form > p {
+      color: var(--color-ink-faded);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-sm);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: var(--space-16);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 767px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-item {
+      padding: var(--space-6);
+      background: var(--color-parchment);
+      border-radius: var(--radius-lg);
+    }
+
+    .faq-item h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-3);
+    }
+
+    .faq-item p {
+      color: var(--color-ink-light);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Page header */
+    .page-header {
+      text-align: center;
+      padding: var(--space-12) 0;
+      margin-bottom: var(--space-8);
+    }
+
+    .page-header__subtitle {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: var(--space-3);
+    }
+
+    .page-header h1 {
+      margin-bottom: var(--space-4);
+    }
+
+    .page-header p {
+      color: var(--color-ink-light);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Form success message */
+    .form-success {
+      text-align: center;
+      padding: var(--space-12);
+    }
+
+    .form-success__icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-6);
+      background: var(--color-sage-muted);
+      border-radius: var(--radius-full);
+      color: var(--color-sage-dark);
+    }
+
+    .form-success h3 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .form-success p {
+      color: var(--color-ink-light);
+    }
+
+    /* Mobile nav */
+    @media (max-width: 767px) {
+      .header__nav.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-cream);
+        padding: var(--space-6);
+        border-bottom: var(--border-thin);
+        box-shadow: var(--shadow-lg);
+      }
+    }
+
+    .header--scrolled {
+      box-shadow: var(--shadow-md);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="header__logo">Cose <span>Vintage</span></a>
+
+        <nav class="header__nav" id="main-nav">
+          <a href="/shop.html" class="header__nav-link">Shop</a>
+          <a href="/shop.html?filter=nuovi" class="header__nav-link">Nuovi Arrivi</a>
+          <a href="/chi-siamo.html" class="header__nav-link">Chi Siamo</a>
+          <a href="/contatti.html" class="header__nav-link active">Contatti</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="btn btn-icon btn-ghost snipcart-customer-signin" aria-label="Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-ghost header__cart snipcart-checkout" aria-label="Carrello">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span class="header__cart-count snipcart-items-count" style="display: none;">0</span>
+          </button>
+          <button class="header__menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header">
+        <p class="page-header__subtitle">Parliamo</p>
+        <h1>Contattaci</h1>
+        <p>
+          Hai domande su un prodotto, un ordine o vuoi semplicemente dirci ciao?
+          Siamo qui per te.
+        </p>
+      </div>
+
+      <!-- Contact Layout -->
+      <div class="contact-layout">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Come Trovarci</h2>
+          <p>
+            Rispondiamo a tutte le email entro 24 ore. Per urgenze,
+            contattaci su WhatsApp.
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-item__content">
+              <p class="contact-item__label">Email</p>
+              <p class="contact-item__value">
+                <a href="mailto:ciao@cosevintage.com">ciao@cosevintage.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-item__content">
+              <p class="contact-item__label">WhatsApp</p>
+              <p class="contact-item__value">
+                <a href="https://wa.me/393XXXXXXXXX" target="_blank" rel="noopener">+39 3XX XXX XXXX</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="contact-item__content">
+              <p class="contact-item__label">Orari Risposta</p>
+              <p class="contact-item__value">
+                Lun - Ven: 10:00 - 18:00<br>
+                Sab: 10:00 - 14:00
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <a href="https://instagram.com/cosevintage" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+              </svg>
+            </a>
+            <a href="https://pinterest.com/cosevintage" target="_blank" rel="noopener" aria-label="Pinterest">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form" id="contact-form-container">
+          <h2>Scrivici un Messaggio</h2>
+          <p>Compila il form e ti risponderemo il prima possibile.</p>
+
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Nome *</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email *</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Oggetto</label>
+              <select id="subject" name="subject" class="form-select">
+                <option value="">Seleziona un argomento</option>
+                <option value="prodotto">Informazioni su un prodotto</option>
+                <option value="ordine">Domanda su un ordine</option>
+                <option value="reso">Reso o cambio</option>
+                <option value="collaborazione">Proposta di collaborazione</option>
+                <option value="altro">Altro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Messaggio *</label>
+              <textarea id="message" name="message" class="form-textarea" rows="5" required placeholder="Raccontaci come possiamo aiutarti..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input type="checkbox" name="privacy" required>
+                <span>Ho letto e accetto la <a href="/privacy.html">Privacy Policy</a> *</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Invia Messaggio</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <section class="faq-section">
+        <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-10);">Domande Frequenti</h2>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>Come posso sapere se un capo mi sta?</h3>
+            <p>
+              Ogni prodotto ha misure dettagliate (spalle, petto, vita, lunghezza).
+              Ti consigliamo di confrontarle con un capo simile che gia' possiedi.
+              Per dubbi, scrivici!
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Quanto costa la spedizione?</h3>
+            <p>
+              Spedizione gratuita in Italia per ordini sopra i €100.
+              Per ordini inferiori, la spedizione costa €7.
+              Spediamo anche in Europa (€15).
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Posso rendere un prodotto?</h3>
+            <p>
+              Certo! Hai 14 giorni per restituire il prodotto se non ti soddisfa.
+              Il reso e' gratuito in Italia. Contattaci per organizzare il ritiro.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>I capi sono lavati e pronti da indossare?</h3>
+            <p>
+              Si! Tutti i capi vengono puliti professionalmente prima della spedizione.
+              Arrivano pronti per essere indossati.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Cose Vintage</p>
+          <p class="footer__tagline">"Ogni pezzo ha una storia"</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Shop</h4>
+          <ul class="footer__links">
+            <li><a href="/shop.html">Tutti i Prodotti</a></li>
+            <li><a href="/shop.html?categoria=giacche">Giacche</a></li>
+            <li><a href="/shop.html?categoria=vestiti">Vestiti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Info</h4>
+          <ul class="footer__links">
+            <li><a href="/chi-siamo.html">Chi Siamo</a></li>
+            <li><a href="/contatti.html">Contatti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legale</h4>
+          <ul class="footer__links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Cose Vintage.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/cosevintage" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Snipcart -->
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
+
+  <script src="script.js"></script>
+
+  <!-- Contact form handling -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const container = document.getElementById('contact-form-container');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      // Disable button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Invio in corso...';
+
+      // Simulate form submission (replace with actual API call)
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // Show success message
+        container.innerHTML = `
+          <div class="form-success">
+            <div class="form-success__icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3>Messaggio Inviato!</h3>
+            <p>Grazie per averci contattato. Ti risponderemo il prima possibile.</p>
+          </div>
+        `;
+      } catch (error) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Invia Messaggio';
+        alert('Si e\' verificato un errore. Riprova.');
+      }
+    });
+  </script>
+</body>
+</html>

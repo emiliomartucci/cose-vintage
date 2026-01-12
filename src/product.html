@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blazer Doppiopetto Lana - Anni '80, Made in Italy. Pezzo unico vintage in condizioni eccellenti.">
+
+  <title>Blazer Doppiopetto Lana | Cose Vintage</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cosevintage.com/product.html?id=blazer-lana-80">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blazer Doppiopetto Lana | Cose Vintage">
+  <meta property="og:description" content="Anni '80, Made in Italy. Pezzo unico vintage in condizioni eccellenti.">
+  <meta property="og:type" content="product">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800">
+  <meta property="product:price:amount" content="85">
+  <meta property="product:price:currency" content="EUR">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Snipcart -->
+  <link rel="preconnect" href="https://cdn.snipcart.com">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+
+  <!-- Schema.org Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Blazer Doppiopetto Lana",
+    "description": "Elegante blazer doppiopetto in pura lana vergine, realizzato in Italia negli anni '80. Bottoni dorati, fodera in seta, spalle strutturate tipiche dell'epoca.",
+    "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800",
+    "brand": {
+      "@type": "Brand",
+      "name": "Cose Vintage"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "85",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/UsedCondition"
+    }
+  }
+  </script>
+
+  <style>
+    .product-page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    @media (max-width: 1023px) {
+      .product-page {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    /* Gallery */
+    .product-gallery {
+      position: sticky;
+      top: 100px;
+    }
+
+    @media (max-width: 1023px) {
+      .product-gallery {
+        position: static;
+      }
+    }
+
+    .product-gallery__main {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-4);
+      background: var(--color-parchment);
+    }
+
+    .product-gallery__main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-gallery__badge {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+    }
+
+    .product-gallery__thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+
+    .product-gallery__thumb {
+      aspect-ratio: 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color var(--transition-fast);
+    }
+
+    .product-gallery__thumb.active,
+    .product-gallery__thumb:hover {
+      border-color: var(--color-sage);
+    }
+
+    .product-gallery__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product Info */
+    .product-info {
+      padding: var(--space-4) 0;
+    }
+
+    .product-info__category {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: var(--space-2);
+    }
+
+    .product-info__title {
+      font-size: var(--text-4xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .product-info__era {
+      font-family: var(--font-accent);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-ink-light);
+      margin-bottom: var(--space-6);
+    }
+
+    .product-info__price {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .product-info__price-current {
+      font-family: var(--font-ui);
+      font-size: var(--text-3xl);
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    .product-info__price-original {
+      font-family: var(--font-ui);
+      font-size: var(--text-xl);
+      color: var(--color-ink-faded);
+      text-decoration: line-through;
+    }
+
+    /* Condition */
+    .product-condition {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: var(--color-parchment);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-6);
+    }
+
+    .product-condition__icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-sage);
+      border-radius: var(--radius-full);
+      color: var(--color-cream);
+    }
+
+    .product-condition__text {
+      flex: 1;
+    }
+
+    .product-condition__label {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-ink);
+    }
+
+    .product-condition__desc {
+      font-size: var(--text-sm);
+      color: var(--color-ink-faded);
+    }
+
+    /* Size selector */
+    .product-size {
+      margin-bottom: var(--space-6);
+    }
+
+    .product-size__label {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-ink);
+      margin-bottom: var(--space-3);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .product-size__guide {
+      color: var(--color-terracotta);
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .product-size__options {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .product-size__option {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-cream-dark);
+      border-radius: var(--radius-md);
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      background: var(--color-cream);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .product-size__option:hover {
+      border-color: var(--color-sage);
+    }
+
+    .product-size__option.active {
+      background: var(--color-sage);
+      border-color: var(--color-sage);
+      color: var(--color-cream);
+    }
+
+    .product-size__option.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Add to cart */
+    .product-actions {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+
+    .product-actions .btn-primary {
+      flex: 1;
+    }
+
+    .product-actions .btn-icon {
+      flex-shrink: 0;
+    }
+
+    /* Description */
+    .product-description {
+      margin-bottom: var(--space-8);
+    }
+
+    .product-description h3 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .product-description p {
+      color: var(--color-ink-light);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Details list */
+    .product-details {
+      margin-bottom: var(--space-8);
+    }
+
+    .product-details h3 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .product-details__list {
+      list-style: none;
+    }
+
+    .product-details__list li {
+      display: flex;
+      padding: var(--space-3) 0;
+      border-bottom: var(--border-thin);
+      font-size: var(--text-sm);
+    }
+
+    .product-details__list li:last-child {
+      border-bottom: none;
+    }
+
+    .product-details__label {
+      width: 120px;
+      font-family: var(--font-ui);
+      font-weight: 500;
+      color: var(--color-ink);
+    }
+
+    .product-details__value {
+      color: var(--color-ink-light);
+    }
+
+    /* Shipping info */
+    .shipping-info {
+      background: var(--color-parchment);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+
+    .shipping-info__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+    }
+
+    .shipping-info__item:not(:last-child) {
+      border-bottom: var(--border-thin);
+    }
+
+    .shipping-info__item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-sage);
+      flex-shrink: 0;
+    }
+
+    .shipping-info__text {
+      font-size: var(--text-sm);
+      color: var(--color-ink-light);
+    }
+
+    .shipping-info__text strong {
+      color: var(--color-ink);
+    }
+
+    /* Related products */
+    .related-products {
+      margin-top: var(--space-16);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-ink-faded);
+      margin-bottom: var(--space-6);
+    }
+
+    .breadcrumb a {
+      color: var(--color-ink-faded);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--color-ink);
+    }
+
+    .breadcrumb__separator {
+      color: var(--color-cream-dark);
+    }
+
+    /* Mobile nav */
+    @media (max-width: 767px) {
+      .header__nav.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-cream);
+        padding: var(--space-6);
+        border-bottom: var(--border-thin);
+        box-shadow: var(--shadow-lg);
+      }
+    }
+
+    .header--scrolled {
+      box-shadow: var(--shadow-md);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="header__logo">Cose <span>Vintage</span></a>
+
+        <nav class="header__nav" id="main-nav">
+          <a href="/shop.html" class="header__nav-link">Shop</a>
+          <a href="/shop.html?filter=nuovi" class="header__nav-link">Nuovi Arrivi</a>
+          <a href="/chi-siamo.html" class="header__nav-link">Chi Siamo</a>
+          <a href="/contatti.html" class="header__nav-link">Contatti</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="btn btn-icon btn-ghost snipcart-customer-signin" aria-label="Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-ghost header__cart snipcart-checkout" aria-label="Carrello">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span class="header__cart-count snipcart-items-count" style="display: none;">0</span>
+          </button>
+          <button class="header__menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb__separator">/</span>
+        <a href="/shop.html">Shop</a>
+        <span class="breadcrumb__separator">/</span>
+        <a href="/shop.html?categoria=giacche">Giacche</a>
+        <span class="breadcrumb__separator">/</span>
+        <span>Blazer Doppiopetto Lana</span>
+      </nav>
+
+      <div class="product-page">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="product-gallery__main">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&h=1067&fit=crop" alt="Blazer Doppiopetto Lana - Vista frontale" id="main-image">
+            <span class="product-gallery__badge badge badge-new">Nuovo Arrivo</span>
+          </div>
+          <div class="product-gallery__thumbnails">
+            <button class="product-gallery__thumb active" data-image="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&h=1067&fit=crop">
+              <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=200&h=200&fit=crop" alt="Vista frontale">
+            </button>
+            <button class="product-gallery__thumb" data-image="https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=800&h=1067&fit=crop">
+              <img src="https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=200&h=200&fit=crop" alt="Dettaglio tessuto">
+            </button>
+            <button class="product-gallery__thumb" data-image="https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=800&h=1067&fit=crop">
+              <img src="https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=200&h=200&fit=crop" alt="Vista laterale">
+            </button>
+            <button class="product-gallery__thumb" data-image="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&h=1067&fit=crop">
+              <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=200&h=200&fit=crop" alt="Dettaglio bottoni">
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <span class="product-info__category">Giacche</span>
+          <h1 class="product-info__title">Blazer Doppiopetto Lana</h1>
+          <p class="product-info__era">Anni '80 · Made in Italy</p>
+
+          <div class="product-info__price">
+            <span class="product-info__price-current">€85</span>
+          </div>
+
+          <!-- Condition -->
+          <div class="product-condition">
+            <div class="product-condition__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="product-condition__text">
+              <span class="product-condition__label">Condizioni Eccellenti</span>
+              <span class="product-condition__desc">Nessun segno di usura visibile, come nuovo</span>
+            </div>
+          </div>
+
+          <!-- Size -->
+          <div class="product-size">
+            <div class="product-size__label">
+              <span>Taglia: <strong>M</strong></span>
+              <span class="product-size__guide">Guida taglie</span>
+            </div>
+            <div class="product-size__options">
+              <button class="product-size__option disabled">XS</button>
+              <button class="product-size__option disabled">S</button>
+              <button class="product-size__option active">M</button>
+              <button class="product-size__option disabled">L</button>
+              <button class="product-size__option disabled">XL</button>
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--color-ink-faded); margin-top: var(--space-2);">
+              * Pezzo unico - taglia unica disponibile
+            </p>
+          </div>
+
+          <!-- Add to Cart -->
+          <div class="product-actions">
+            <button
+              class="btn btn-primary btn-lg snipcart-add-item"
+              data-item-id="blazer-lana-80"
+              data-item-name="Blazer Doppiopetto Lana"
+              data-item-price="85"
+              data-item-url="/product.html?id=blazer-lana-80"
+              data-item-description="Anni '80 · Made in Italy · Taglia M"
+              data-item-image="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400"
+              data-item-categories="Giacche"
+            >
+              Aggiungi al Carrello
+            </button>
+            <button class="btn btn-icon btn-secondary product-card__wishlist" aria-label="Aggiungi ai preferiti">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Description -->
+          <div class="product-description">
+            <h3>La Storia di Questo Pezzo</h3>
+            <p>
+              Questo magnifico blazer doppiopetto rappresenta il meglio della sartoria italiana degli anni '80.
+              Le spalle strutturate, tipiche dell'epoca, conferiscono una silhouette potente e sofisticata.
+              I bottoni dorati originali e la fodera in seta aggiungono quel tocco di lusso discreto
+              che caratterizzava l'alta moda di quegli anni.
+            </p>
+            <p>
+              Perfetto per chi cerca un pezzo statement che unisca eleganza senza tempo
+              e carattere vintage autentico. Ideale sia per occasioni formali che per
+              un look casual chic con jeans e t-shirt.
+            </p>
+          </div>
+
+          <!-- Details -->
+          <div class="product-details">
+            <h3>Dettagli</h3>
+            <ul class="product-details__list">
+              <li>
+                <span class="product-details__label">Materiale</span>
+                <span class="product-details__value">100% Pura Lana Vergine</span>
+              </li>
+              <li>
+                <span class="product-details__label">Fodera</span>
+                <span class="product-details__value">Seta</span>
+              </li>
+              <li>
+                <span class="product-details__label">Colore</span>
+                <span class="product-details__value">Blu Navy</span>
+              </li>
+              <li>
+                <span class="product-details__label">Epoca</span>
+                <span class="product-details__value">Anni '80</span>
+              </li>
+              <li>
+                <span class="product-details__label">Origine</span>
+                <span class="product-details__value">Made in Italy</span>
+              </li>
+              <li>
+                <span class="product-details__label">Taglia</span>
+                <span class="product-details__value">M (IT 48)</span>
+              </li>
+              <li>
+                <span class="product-details__label">Misure</span>
+                <span class="product-details__value">Spalle 44cm, Petto 52cm, Lunghezza 72cm</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Shipping -->
+          <div class="shipping-info">
+            <div class="shipping-info__item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="1" y="3" width="15" height="13"/>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span class="shipping-info__text">
+                <strong>Spedizione gratuita</strong> in Italia sopra i €100
+              </span>
+            </div>
+            <div class="shipping-info__item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span class="shipping-info__text">
+                Consegna in <strong>3-5 giorni lavorativi</strong>
+              </span>
+            </div>
+            <div class="shipping-info__item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="23 4 23 10 17 10"/>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+              </svg>
+              <span class="shipping-info__text">
+                <strong>Reso gratuito</strong> entro 14 giorni
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Products -->
+      <section class="related-products">
+        <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-10);">Potrebbe Piacerti</h2>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=533&fit=crop" alt="Trench Gabardine" class="product-card__image" loading="lazy">
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Giacche</span>
+              <h3 class="product-card__title"><a href="/product.html?id=trench-60">Trench Gabardine Classico</a></h3>
+              <p class="product-card__era">Anni '60 · Inghilterra</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€145</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=533&fit=crop" alt="Cardigan Lana" class="product-card__image" loading="lazy">
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Maglieria</span>
+              <h3 class="product-card__title"><a href="/product.html?id=cardigan-lana">Cardigan Lana Merino</a></h3>
+              <p class="product-card__era">Anni '90 · Scozia</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€75</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=533&fit=crop" alt="Camicia Seta" class="product-card__image" loading="lazy">
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Camicie</span>
+              <h3 class="product-card__title"><a href="/product.html?id=camicia-seta">Camicia Seta Stampata</a></h3>
+              <p class="product-card__era">Anni '80 · Francia</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€65</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=533&fit=crop" alt="Foulard Seta" class="product-card__image" loading="lazy">
+              <span class="product-card__badge badge badge-rare">Raro</span>
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Accessori</span>
+              <h3 class="product-card__title"><a href="/product.html?id=foulard-seta">Foulard Seta Vintage</a></h3>
+              <p class="product-card__era">Anni '80 · Francia</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€120</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Cose Vintage</p>
+          <p class="footer__tagline">"Ogni pezzo ha una storia"</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Shop</h4>
+          <ul class="footer__links">
+            <li><a href="/shop.html">Tutti i Prodotti</a></li>
+            <li><a href="/shop.html?categoria=giacche">Giacche</a></li>
+            <li><a href="/shop.html?categoria=vestiti">Vestiti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Info</h4>
+          <ul class="footer__links">
+            <li><a href="/chi-siamo.html">Chi Siamo</a></li>
+            <li><a href="/contatti.html">Contatti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legale</h4>
+          <ul class="footer__links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Cose Vintage.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/cosevintage" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Snipcart -->
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+
+  <!-- Product page specific JS -->
+  <script>
+    // Gallery thumbnail click
+    document.querySelectorAll('.product-gallery__thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const mainImage = document.getElementById('main-image');
+        const newSrc = thumb.dataset.image;
+
+        // Update main image
+        mainImage.src = newSrc;
+
+        // Update active state
+        document.querySelectorAll('.product-gallery__thumb').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

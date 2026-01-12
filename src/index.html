@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cose Vintage - Abbigliamento vintage premium selezionato con cura. Pezzi unici dai migliori mercatini parigini, ogni capo racconta una storia.">
+
+  <title>Cose Vintage | Abbigliamento Vintage Premium</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cosevintage.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cose Vintage | Abbigliamento Vintage Premium">
+  <meta property="og:description" content="Abbigliamento vintage premium selezionato con cura. Pezzi unici dai migliori mercatini parigini.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cosevintage.com/">
+  <meta property="og:image" content="https://cosevintage.com/assets/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Snipcart -->
+  <link rel="preconnect" href="https://cdn.snipcart.com">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "Cose Vintage",
+    "description": "Abbigliamento vintage premium selezionato con cura",
+    "url": "https://cosevintage.com",
+    "priceRange": "$$"
+  }
+  </script>
+
+  <style>
+    /* Page-specific styles */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 767px) {
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .category-card {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--color-parchment);
+    }
+
+    .category-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .category-card:hover .category-card__image {
+      transform: scale(1.08);
+    }
+
+    .category-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(61, 53, 46, 0.7) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-6);
+    }
+
+    .category-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      color: var(--color-cream);
+      margin: 0;
+    }
+
+    .category-card__count {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-cream);
+      opacity: 0.8;
+      margin-top: var(--space-1);
+    }
+
+    /* Story section */
+    .story-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    @media (max-width: 767px) {
+      .story-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .story-image {
+      position: relative;
+    }
+
+    .story-image img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-vintage);
+    }
+
+    .story-image::before {
+      content: '';
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      right: calc(var(--space-4) * -1);
+      bottom: calc(var(--space-4) * -1);
+      border: 2px solid var(--color-gold-light);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+    }
+
+    /* Newsletter section */
+    .newsletter-section {
+      background: var(--color-parchment);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-section::before,
+    .newsletter-section::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 1px solid var(--color-gold-light);
+    }
+
+    .newsletter-section::before {
+      top: var(--space-6);
+      left: var(--space-6);
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .newsletter-section::after {
+      bottom: var(--space-6);
+      right: var(--space-6);
+      border-left: none;
+      border-top: none;
+    }
+
+    /* Mobile nav styles */
+    @media (max-width: 767px) {
+      .header__nav.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-cream);
+        padding: var(--space-6);
+        border-bottom: var(--border-thin);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .header__nav.is-open .header__nav-link {
+        padding: var(--space-3) 0;
+        border-bottom: var(--border-thin);
+      }
+    }
+
+    /* Header scroll styles */
+    .header--scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
+    .header--hidden {
+      transform: translateY(-100%);
+    }
+
+    .header {
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="header__logo">Cose <span>Vintage</span></a>
+
+        <nav class="header__nav" id="main-nav">
+          <a href="/shop.html" class="header__nav-link">Shop</a>
+          <a href="/shop.html?filter=nuovi" class="header__nav-link">Nuovi Arrivi</a>
+          <a href="/chi-siamo.html" class="header__nav-link">Chi Siamo</a>
+          <a href="/contatti.html" class="header__nav-link">Contatti</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="btn btn-icon btn-ghost snipcart-customer-signin" aria-label="Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </button>
+          <button class="btn btn-icon btn-ghost header__cart snipcart-checkout" aria-label="Carrello">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span class="header__cart-count snipcart-items-count" style="display: none;">0</span>
+          </button>
+          <button class="header__menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=900&fit=crop" alt="" loading="eager">
+      </div>
+      <div class="container">
+        <div class="hero__content">
+          <p class="hero__subtitle">Selezionato con cura</p>
+          <h1 class="hero__title">Ogni pezzo<br>racconta una storia</h1>
+          <p class="hero__description">
+            Abbigliamento vintage premium dai migliori mercatini parigini.
+            Pezzi unici che hanno attraversato decenni con eleganza immutata.
+          </p>
+          <div class="hero__cta">
+            <a href="/shop.html" class="btn btn-primary btn-lg">Esplora la Collezione</a>
+            <a href="/chi-siamo.html" class="btn btn-secondary btn-lg">La Nostra Storia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUOVI ARRIVI -->
+    <section class="section">
+      <div class="container">
+        <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-10);">Nuovi Arrivi</h2>
+
+        <div class="product-grid">
+          <!-- Product 1 -->
+          <article class="product-card animate-on-scroll">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=533&fit=crop" alt="Blazer Doppiopetto Lana" class="product-card__image" loading="lazy">
+              <span class="product-card__badge badge badge-new">Nuovo</span>
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+              <div class="product-card__overlay">
+                <div class="product-card__actions">
+                  <a href="/product.html?id=blazer-lana-80" class="btn btn-primary btn-sm">Scopri</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Giacche</span>
+              <h3 class="product-card__title"><a href="/product.html?id=blazer-lana-80">Blazer Doppiopetto Lana</a></h3>
+              <p class="product-card__era">Anni '80 · Made in Italy</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€85</span>
+              </div>
+              <div class="product-card__condition">
+                <span class="product-card__condition-dot product-card__condition-dot--good"></span>
+                <span>Condizioni eccellenti</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card animate-on-scroll">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=533&fit=crop" alt="Abito Seta Floreale" class="product-card__image" loading="lazy">
+              <span class="product-card__badge badge badge-sale">-30%</span>
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+              <div class="product-card__overlay">
+                <div class="product-card__actions">
+                  <a href="/product.html?id=abito-seta-70" class="btn btn-primary btn-sm">Scopri</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Vestiti</span>
+              <h3 class="product-card__title"><a href="/product.html?id=abito-seta-70">Abito Seta Floreale</a></h3>
+              <p class="product-card__era">Anni '70 · Francia</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€95</span>
+                <span class="product-card__price-original">€135</span>
+              </div>
+              <div class="product-card__condition">
+                <span class="product-card__condition-dot product-card__condition-dot--good"></span>
+                <span>Condizioni eccellenti</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card animate-on-scroll">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=533&fit=crop" alt="Trench Gabardine" class="product-card__image" loading="lazy">
+              <span class="product-card__badge badge badge-rare">Raro</span>
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+              <div class="product-card__overlay">
+                <div class="product-card__actions">
+                  <a href="/product.html?id=trench-60" class="btn btn-primary btn-sm">Scopri</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Giacche</span>
+              <h3 class="product-card__title"><a href="/product.html?id=trench-60">Trench Gabardine Classico</a></h3>
+              <p class="product-card__era">Anni '60 · Inghilterra</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€145</span>
+              </div>
+              <div class="product-card__condition">
+                <span class="product-card__condition-dot product-card__condition-dot--good"></span>
+                <span>Condizioni eccellenti</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card animate-on-scroll">
+            <div class="product-card__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=533&fit=crop" alt="Borsa Pelle Intrecciata" class="product-card__image" loading="lazy">
+              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+              <div class="product-card__overlay">
+                <div class="product-card__actions">
+                  <a href="/product.html?id=borsa-pelle" class="btn btn-primary btn-sm">Scopri</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__category">Accessori</span>
+              <h3 class="product-card__title"><a href="/product.html?id=borsa-pelle">Borsa Pelle Intrecciata</a></h3>
+              <p class="product-card__era">Anni '70 · Artigianale</p>
+              <div class="product-card__price">
+                <span class="product-card__price-current">€180</span>
+              </div>
+              <div class="product-card__condition">
+                <span class="product-card__condition-dot product-card__condition-dot--fair"></span>
+                <span>Buone condizioni</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--space-10);">
+          <a href="/shop.html" class="btn btn-secondary btn-lg">Vedi Tutta la Collezione</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LA NOSTRA STORIA -->
+    <section class="section bg-parchment">
+      <div class="container">
+        <div class="story-section">
+          <div class="story-image animate-on-scroll">
+            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=700&fit=crop" alt="Mercatino vintage parigino" loading="lazy">
+          </div>
+          <div class="animate-on-scroll">
+            <p class="small-caps" style="margin-bottom: var(--space-4);">La Nostra Storia</p>
+            <h2 style="margin-bottom: var(--space-6);">Dai mercatini di Parigi<br>al tuo armadio</h2>
+            <p style="font-size: var(--text-lg); color: var(--color-ink-light); margin-bottom: var(--space-6); line-height: var(--leading-relaxed);">
+              Ogni domenica mattina, mentre Parigi si sveglia lentamente, noi siamo gia' tra le bancarelle
+              di Porte de Clignancourt. Cerchiamo pezzi che abbiano un'anima, capi che raccontino
+              una storia attraverso le loro cuciture, i loro tessuti, le loro imperfezioni perfette.
+            </p>
+            <blockquote class="quote" style="margin-bottom: var(--space-8);">
+              La moda passa, lo stile resta.
+            </blockquote>
+            <a href="/chi-siamo.html" class="btn btn-secondary">Scopri di Piu</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIE -->
+    <section class="section">
+      <div class="container">
+        <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-10);">Esplora per Categoria</h2>
+
+        <div class="categories-grid">
+          <a href="/shop.html?categoria=giacche" class="category-card animate-on-scroll">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&h=625&fit=crop" alt="Giacche" class="category-card__image" loading="lazy">
+            <div class="category-card__overlay">
+              <div>
+                <h3 class="category-card__title">Giacche</h3>
+                <p class="category-card__count">24 pezzi</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="/shop.html?categoria=vestiti" class="category-card animate-on-scroll">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=625&fit=crop" alt="Vestiti" class="category-card__image" loading="lazy">
+            <div class="category-card__overlay">
+              <div>
+                <h3 class="category-card__title">Vestiti</h3>
+                <p class="category-card__count">18 pezzi</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="/shop.html?categoria=accessori" class="category-card animate-on-scroll">
+            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=500&h=625&fit=crop" alt="Accessori" class="category-card__image" loading="lazy">
+            <div class="category-card__overlay">
+              <div>
+                <h3 class="category-card__title">Accessori</h3>
+                <p class="category-card__count">12 pezzi</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section">
+      <div class="container container-md">
+        <div class="newsletter-section animate-on-scroll">
+          <p class="small-caps" style="margin-bottom: var(--space-4);">Resta Aggiornato</p>
+          <h2 style="margin-bottom: var(--space-4);">Nuovi arrivi ogni settimana</h2>
+          <p style="color: var(--color-ink-light); margin-bottom: var(--space-8); max-width: 400px; margin-left: auto; margin-right: auto;">
+            Iscriviti per ricevere in anteprima i nuovi pezzi e offerte esclusive riservate agli iscritti.
+          </p>
+          <form class="newsletter-form" style="margin: 0 auto;">
+            <input type="email" class="form-input" placeholder="La tua email..." required>
+            <button type="submit" class="btn btn-gold">Iscriviti</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Cose Vintage</p>
+          <p class="footer__tagline">"Ogni pezzo ha una storia"</p>
+          <p style="font-size: var(--text-sm); color: var(--color-ink-light);">
+            Abbigliamento vintage premium selezionato con cura dai migliori mercatini europei.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Shop</h4>
+          <ul class="footer__links">
+            <li><a href="/shop.html">Tutti i Prodotti</a></li>
+            <li><a href="/shop.html?filter=nuovi">Nuovi Arrivi</a></li>
+            <li><a href="/shop.html?categoria=giacche">Giacche</a></li>
+            <li><a href="/shop.html?categoria=vestiti">Vestiti</a></li>
+            <li><a href="/shop.html?categoria=accessori">Accessori</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Info</h4>
+          <ul class="footer__links">
+            <li><a href="/chi-siamo.html">Chi Siamo</a></li>
+            <li><a href="/contatti.html">Contatti</a></li>
+            <li><a href="/spedizioni.html">Spedizioni</a></li>
+            <li><a href="/resi.html">Resi e Rimborsi</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Legale</h4>
+          <ul class="footer__links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/cookie.html">Cookie Policy</a></li>
+            <li><a href="/termini.html">Termini e Condizioni</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Cose Vintage. Tutti i diritti riservati.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/cosevintage" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="https://pinterest.com/cosevintage" target="_blank" rel="noopener" aria-label="Pinterest">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Snipcart -->
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+</body>
+</html>

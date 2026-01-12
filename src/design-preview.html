@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System Preview - Cose Vintage</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Preview-specific styles */
+    .preview-section {
+      padding: var(--space-12) 0;
+      border-bottom: 1px dashed var(--color-cream-dark);
+    }
+
+    .preview-section:last-child {
+      border-bottom: none;
+    }
+
+    .preview-title {
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--color-cream-dark);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .color-swatch {
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-3);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .color-swatch span {
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      background: rgba(255,255,255,0.9);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+    }
+
+    .type-sample {
+      margin-bottom: var(--space-6);
+    }
+
+    .type-label {
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      color: var(--color-ink-faded);
+      margin-bottom: var(--space-2);
+    }
+
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .spacing-demo {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-2);
+    }
+
+    .spacing-box {
+      background: var(--color-sage-muted);
+      border-radius: var(--radius-sm);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-16);">
+
+    <header style="text-align: center; margin-bottom: var(--space-16);">
+      <h1 style="margin-bottom: var(--space-4);">Cose Vintage</h1>
+      <p class="quote" style="max-width: 500px; margin: 0 auto; padding-left: 0;">
+        Design System "La Brocante"
+      </p>
+      <p style="color: var(--color-ink-faded); margin-top: var(--space-4);">
+        Mercatino parigino romantico + Verde salvia & Beige
+      </p>
+    </header>
+
+    <!-- COLORS -->
+    <section class="preview-section">
+      <h2 class="preview-title">Palette Colori</h2>
+
+      <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Primary - Verde Salvia</h3>
+      <div class="color-grid" style="margin-bottom: var(--space-8);">
+        <div class="color-swatch" style="background: var(--color-sage-light);"><span>Sage Light<br>#A8B89A</span></div>
+        <div class="color-swatch" style="background: var(--color-sage);"><span>Sage<br>#8B9A7A</span></div>
+        <div class="color-swatch" style="background: var(--color-sage-dark); color: white;"><span style="color: var(--color-ink);">Sage Dark<br>#6B7A5A</span></div>
+        <div class="color-swatch" style="background: var(--color-sage-muted);"><span>Sage Muted<br>#C5CEB8</span></div>
+      </div>
+
+      <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Background - Crema & Pergamena</h3>
+      <div class="color-grid" style="margin-bottom: var(--space-8);">
+        <div class="color-swatch" style="background: var(--color-cream); border: 1px solid var(--color-cream-dark);"><span>Cream<br>#F7F3EB</span></div>
+        <div class="color-swatch" style="background: var(--color-cream-warm);"><span>Cream Warm<br>#F2EBD9</span></div>
+        <div class="color-swatch" style="background: var(--color-cream-dark);"><span>Cream Dark<br>#E8E0D0</span></div>
+        <div class="color-swatch" style="background: var(--color-parchment);"><span>Parchment<br>#EDE5D8</span></div>
+      </div>
+
+      <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Accent - Terracotta & Oro</h3>
+      <div class="color-grid" style="margin-bottom: var(--space-8);">
+        <div class="color-swatch" style="background: var(--color-terracotta-light);"><span>Terracotta L<br>#D9A08A</span></div>
+        <div class="color-swatch" style="background: var(--color-terracotta);"><span>Terracotta<br>#C4846C</span></div>
+        <div class="color-swatch" style="background: var(--color-terracotta-dark);"><span>Terracotta D<br>#A66B54</span></div>
+        <div class="color-swatch" style="background: var(--color-gold);"><span>Gold<br>#B8976D</span></div>
+        <div class="color-swatch" style="background: var(--color-gold-light);"><span>Gold Light<br>#D4BC9A</span></div>
+      </div>
+
+      <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4);">Neutrals - Inchiostro Caldo</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background: var(--color-ink); color: white;"><span style="color: white;">Ink<br>#3D352E</span></div>
+        <div class="color-swatch" style="background: var(--color-ink-light); color: white;"><span style="color: white;">Ink Light<br>#5C534A</span></div>
+        <div class="color-swatch" style="background: var(--color-ink-faded); color: white;"><span style="color: white;">Ink Faded<br>#7A6F64</span></div>
+        <div class="color-swatch" style="background: var(--color-sepia); color: white;"><span style="color: white;">Sepia<br>#8B7355</span></div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="preview-section">
+      <h2 class="preview-title">Typography</h2>
+
+      <div class="type-sample">
+        <p class="type-label">Display Font: Playfair Display</p>
+        <p class="font-display" style="font-size: var(--text-5xl);">Ogni pezzo ha una storia</p>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Body Font: Lora</p>
+        <p class="font-body" style="font-size: var(--text-lg);">Nel cuore di ogni mercatino parigino si nasconde un tesoro. Un vestito che ha danzato in una serata degli anni '70, una giacca che ha attraversato decenni con eleganza immutata.</p>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Accent Font: Cormorant Garamond (Italic)</p>
+        <p class="font-accent" style="font-size: var(--text-2xl); font-style: italic; color: var(--color-ink-light);">"La vera eleganza non passa mai di moda"</p>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">UI Font: Source Sans 3</p>
+        <p class="font-ui" style="font-size: var(--text-sm); letter-spacing: var(--tracking-wide); text-transform: uppercase;">Aggiungi al carrello · Scopri di piu · Newsletter</p>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Heading Scale</p>
+        <h1>H1: Cose Vintage</h1>
+        <h2>H2: Abbigliamento Selezionato</h2>
+        <h3>H3: Nuovi Arrivi</h3>
+        <h4>H4: Giacca Anni '70</h4>
+        <h5>H5: Condizioni Eccellenti</h5>
+        <h6>H6: Spedizione Gratuita</h6>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Titolo Decorato</p>
+        <h2 class="title-decorated" style="font-size: var(--text-2xl);">Nuovi Arrivi</h2>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Quote Style</p>
+        <blockquote class="quote">La moda passa, lo stile resta.</blockquote>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Small Caps</p>
+        <p class="small-caps">Spedizione gratuita sopra i 100€</p>
+      </div>
+
+      <div class="type-sample">
+        <p class="type-label">Link Elegante</p>
+        <a href="#" class="link-elegant">Scopri la collezione completa</a>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="preview-section">
+      <h2 class="preview-title">Buttons</h2>
+
+      <div class="component-row">
+        <button class="btn btn-primary">Aggiungi al Carrello</button>
+        <button class="btn btn-primary btn-lg">Scopri di Piu</button>
+        <button class="btn btn-primary btn-sm">Piccolo</button>
+        <button class="btn btn-primary" disabled>Disabilitato</button>
+      </div>
+
+      <div class="component-row">
+        <button class="btn btn-secondary">Vedi Dettagli</button>
+        <button class="btn btn-secondary btn-lg">Contattaci</button>
+      </div>
+
+      <div class="component-row">
+        <button class="btn btn-ghost">Continua lo Shopping</button>
+        <button class="btn btn-gold">Iscriviti alla Newsletter</button>
+      </div>
+
+      <div class="component-row">
+        <button class="btn btn-icon btn-primary">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+        <button class="btn btn-icon btn-secondary">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- BADGES -->
+    <section class="preview-section">
+      <h2 class="preview-title">Badges</h2>
+
+      <div class="component-row">
+        <span class="badge badge-new">Nuovo</span>
+        <span class="badge badge-sale">-30%</span>
+        <span class="badge badge-sold">Venduto</span>
+        <span class="badge badge-rare">Raro</span>
+      </div>
+
+      <div class="component-row">
+        <span class="badge badge-condition">Buone Condizioni</span>
+        <span class="badge badge-condition badge-condition--excellent">Eccellenti</span>
+        <span class="badge badge-decade">Anni '70</span>
+        <span class="badge badge-decade">Anni '80</span>
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section class="preview-section">
+      <h2 class="preview-title">Form Elements</h2>
+
+      <div style="max-width: 400px;">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="La tua email...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Messaggio</label>
+          <textarea class="form-textarea" placeholder="Raccontaci cosa cerchi..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Categoria</label>
+          <select class="form-select">
+            <option>Seleziona una categoria</option>
+            <option>Giacche</option>
+            <option>Vestiti</option>
+            <option>Accessori</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-checkbox">
+            <input type="checkbox">
+            <span>Accetto di ricevere aggiornamenti sui nuovi arrivi e offerte esclusive</span>
+          </label>
+        </div>
+      </div>
+
+      <h3 style="font-size: var(--text-lg); margin: var(--space-8) 0 var(--space-4);">Newsletter Form</h3>
+      <form class="newsletter-form">
+        <input type="email" class="form-input" placeholder="La tua email...">
+        <button type="submit" class="btn btn-gold">Iscriviti</button>
+      </form>
+    </section>
+
+    <!-- PRODUCT CARDS -->
+    <section class="preview-section">
+      <h2 class="preview-title">Product Cards</h2>
+
+      <div class="product-grid" style="max-width: 900px;">
+        <!-- Card 1 -->
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=533&fit=crop" alt="Giacca vintage" class="product-card__image">
+            <span class="product-card__badge badge badge-new">Nuovo</span>
+            <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+            <div class="product-card__overlay">
+              <div class="product-card__actions">
+                <button class="btn btn-primary btn-sm">Quick View</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <span class="product-card__category">Giacche</span>
+            <h3 class="product-card__title"><a href="#">Blazer Doppiopetto Lana</a></h3>
+            <p class="product-card__era">Anni '80 · Made in Italy</p>
+            <div class="product-card__price">
+              <span class="product-card__price-current">€85</span>
+            </div>
+            <div class="product-card__condition">
+              <span class="product-card__condition-dot product-card__condition-dot--good"></span>
+              <span>Condizioni eccellenti</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=533&fit=crop" alt="Vestito vintage" class="product-card__image">
+            <span class="product-card__badge badge badge-sale">-30%</span>
+            <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+            <div class="product-card__overlay">
+              <div class="product-card__actions">
+                <button class="btn btn-primary btn-sm">Quick View</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <span class="product-card__category">Vestiti</span>
+            <h3 class="product-card__title"><a href="#">Abito Seta Floreale</a></h3>
+            <p class="product-card__era">Anni '70 · Francia</p>
+            <div class="product-card__price">
+              <span class="product-card__price-current">€95</span>
+              <span class="product-card__price-original">€135</span>
+            </div>
+            <div class="product-card__condition">
+              <span class="product-card__condition-dot product-card__condition-dot--good"></span>
+              <span>Condizioni eccellenti</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=533&fit=crop" alt="Borsa vintage" class="product-card__image">
+            <span class="product-card__badge badge badge-rare">Raro</span>
+            <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+            <div class="product-card__overlay">
+              <div class="product-card__actions">
+                <button class="btn btn-primary btn-sm">Quick View</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <span class="product-card__category">Accessori</span>
+            <h3 class="product-card__title"><a href="#">Borsa Pelle Intrecciata</a></h3>
+            <p class="product-card__era">Anni '60 · Artigianale</p>
+            <div class="product-card__price">
+              <span class="product-card__price-current">€180</span>
+            </div>
+            <div class="product-card__condition">
+              <span class="product-card__condition-dot product-card__condition-dot--fair"></span>
+              <span>Buone condizioni</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section class="preview-section">
+      <h2 class="preview-title">Spacing Scale</h2>
+
+      <div class="spacing-demo">
+        <div>
+          <div class="spacing-box" style="width: var(--space-1); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">1</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-2); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">2</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-3); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">3</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-4); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">4</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-6); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">6</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-8); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">8</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-12); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">12</p>
+        </div>
+        <div>
+          <div class="spacing-box" style="width: var(--space-16); height: 40px;"></div>
+          <p class="type-label" style="margin-top: var(--space-2);">16</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EFFECTS -->
+    <section class="preview-section">
+      <h2 class="preview-title">Effects & Decorations</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8);">
+        <div>
+          <p class="type-label">Shadows</p>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div style="padding: var(--space-4); background: white; box-shadow: var(--shadow-sm); border-radius: var(--radius-md);">Shadow SM</div>
+            <div style="padding: var(--space-4); background: white; box-shadow: var(--shadow-md); border-radius: var(--radius-md);">Shadow MD</div>
+            <div style="padding: var(--space-4); background: white; box-shadow: var(--shadow-lg); border-radius: var(--radius-md);">Shadow LG</div>
+            <div style="padding: var(--space-4); background: white; box-shadow: var(--shadow-vintage); border-radius: var(--radius-md);">Shadow Vintage</div>
+          </div>
+        </div>
+
+        <div>
+          <p class="type-label">Decorazioni</p>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div class="corner-decoration" style="padding: var(--space-6); background: var(--color-parchment);">
+              Corner Decoration
+            </div>
+            <div class="frame-vintage" style="padding: var(--space-4); text-align: center;">
+              Frame Vintage
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="type-label">Dividers</p>
+          <div class="divider"></div>
+          <div class="divider-decorative">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEADER PREVIEW -->
+    <section class="preview-section">
+      <h2 class="preview-title">Header Component</h2>
+
+      <header class="header" style="position: relative; margin-bottom: var(--space-8);">
+        <div class="container">
+          <div class="header__inner">
+            <a href="#" class="header__logo">Cose <span>Vintage</span></a>
+
+            <nav class="header__nav">
+              <a href="#" class="header__nav-link active">Shop</a>
+              <a href="#" class="header__nav-link">Nuovi Arrivi</a>
+              <a href="#" class="header__nav-link">Chi Siamo</a>
+              <a href="#" class="header__nav-link">Contatti</a>
+            </nav>
+
+            <div class="header__actions">
+              <button class="btn btn-icon btn-ghost">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+              </button>
+              <button class="btn btn-icon btn-ghost header__cart">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="header__cart-count">2</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <!-- HERO PREVIEW -->
+    <section class="preview-section">
+      <h2 class="preview-title">Hero Section</h2>
+
+      <section class="hero" style="min-height: 50vh; border-radius: var(--radius-lg); overflow: hidden;">
+        <div class="container">
+          <div class="hero__content">
+            <p class="hero__subtitle">Selezionato con cura</p>
+            <h1 class="hero__title">Ogni pezzo<br>racconta una storia</h1>
+            <p class="hero__description">
+              Abbigliamento vintage premium, selezionato nei migliori mercatini parigini.
+              Pezzi unici che hanno attraversato decenni con eleganza.
+            </p>
+            <div class="hero__cta">
+              <a href="#" class="btn btn-primary btn-lg">Esplora la Collezione</a>
+              <a href="#" class="btn btn-secondary btn-lg">Chi Siamo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </div>
+</body>
+</html>
