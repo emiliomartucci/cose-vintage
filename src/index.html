@@ -242,25 +242,86 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO - Layered Parisian Vintage -->
     <section class="hero">
-      <div class="hero__bg">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=900&fit=crop" alt="" loading="eager">
+      <!-- Atmospheric gradient background -->
+      <div class="hero__sky"></div>
+
+      <!-- Layered fabric waves -->
+      <div class="hero__wave hero__wave--back">
+        <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+          <path d="M0,400 L0,280 C200,220 450,260 700,200 C950,140 1150,180 1350,140 C1400,130 1420,150 1440,120 L1440,400 Z" fill="rgba(61,53,46,0.15)"/>
+        </svg>
       </div>
-      <div class="container">
-        <div class="hero__content">
-          <p class="hero__subtitle">Selezionato con cura</p>
-          <h1 class="hero__title">Ogni pezzo<br>racconta una storia</h1>
-          <p class="hero__description">
-            Abbigliamento vintage premium dai migliori mercatini parigini.
-            Pezzi unici che hanno attraversato decenni con eleganza immutata.
-          </p>
-          <div class="hero__cta">
-            <a href="/shop.html" class="btn btn-primary btn-lg">Esplora la Collezione</a>
-            <a href="/chi-siamo.html" class="btn btn-secondary btn-lg">La Nostra Storia</a>
-          </div>
+      <div class="hero__wave hero__wave--mid">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path d="M0,320 L0,200 C180,140 400,180 650,120 C900,60 1100,100 1300,70 C1380,50 1420,80 1440,50 L1440,320 Z" fill="rgba(61,53,46,0.4)"/>
+        </svg>
+      </div>
+      <div class="hero__wave hero__wave--front">
+        <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waveFade" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3D352E" stop-opacity="0.2"/>
+              <stop offset="30%" stop-color="#3D352E" stop-opacity="0.5"/>
+              <stop offset="60%" stop-color="#3D352E" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#3D352E" stop-opacity="1"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,260 L0,180 C150,140 350,160 550,110 C750,60 950,90 1150,50 C1300,20 1400,40 1440,20 L1440,260 Z" fill="url(#waveFade)"/>
+        </svg>
+      </div>
+
+      <!-- Corner decorations -->
+      <div class="hero__decor--corner hero__decor--corner-tl"></div>
+      <div class="hero__decor--corner hero__decor--corner-br"></div>
+
+      <!-- Content -->
+      <div class="hero__container">
+        <span class="hero__badge">Dai mercatini di Parigi</span>
+        <h1 class="hero__title">
+          Ogni pezzo<br>
+          <em>racconta una storia</em>
+        </h1>
+        <p class="hero__subtitle">
+          Abbigliamento vintage premium selezionato con cura.
+          Pezzi unici che hanno attraversato decenni con eleganza immutata.
+        </p>
+        <div class="hero__cta-wrapper">
+          <a href="/shop.html" class="hero__cta">
+            Esplora la Collezione
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/chi-siamo.html" class="hero__cta-secondary">Scopri la nostra storia</a>
         </div>
       </div>
+
+      <!-- Floating product cards -->
+      <div class="hero__floating">
+        <div class="hero__float-card">
+          <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=300&h=400&fit=crop" alt="Blazer vintage" loading="lazy">
+          <p class="hero__float-card-title">Blazer Lana</p>
+          <p class="hero__float-card-meta">Anni '80</p>
+          <p class="hero__float-card-price">85</p>
+        </div>
+        <div class="hero__float-card">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&h=400&fit=crop" alt="Abito vintage" loading="lazy">
+          <p class="hero__float-card-title">Abito Seta</p>
+          <p class="hero__float-card-meta">Anni '70</p>
+          <p class="hero__float-card-price">95</p>
+        </div>
+        <div class="hero__float-card">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=400&fit=crop" alt="Trench vintage" loading="lazy">
+          <p class="hero__float-card-title">Trench Classico</p>
+          <p class="hero__float-card-meta">Anni '60</p>
+          <p class="hero__float-card-price">145</p>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll">Scopri</div>
     </section>
 
     <!-- NUOVI ARRIVI -->

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cose Vintage - Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-sage: #8B9A7A;
+      --color-sage-light: #A8B89A;
+      --color-sage-dark: #6B7A5A;
+      --color-sage-muted: #C5CEB8;
+      --color-cream: #F7F3EB;
+      --color-cream-warm: #F2EBD9;
+      --color-cream-dark: #E8E0D0;
+      --color-parchment: #EDE5D8;
+      --color-terracotta: #C4846C;
+      --color-terracotta-light: #D9A08A;
+      --color-terracotta-dark: #A66B54;
+      --color-ink: #3D352E;
+      --color-ink-light: #5C534A;
+      --color-ink-faded: #7A6F64;
+      --color-gold: #B8976D;
+      --color-gold-light: #D4BC9A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: white;
+      color: var(--color-ink);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 20mm;
+      margin: 0 auto;
+      background: white;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    @media print {
+      body { background: white; }
+      .page {
+        width: 100%;
+        padding: 15mm;
+        margin: 0;
+      }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+      border-bottom: 2px solid var(--color-gold-light);
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--color-ink);
+      margin-bottom: 8px;
+    }
+
+    .header h1 span {
+      color: var(--color-sage);
+    }
+
+    .header .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--color-ink-light);
+    }
+
+    .header .tagline {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-top: 20px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--color-ink);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-cream-dark);
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 2px;
+      background: var(--color-gold);
+      margin-right: 15px;
+      vertical-align: middle;
+    }
+
+    /* Color Palette */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .color-group {
+      margin-bottom: 25px;
+    }
+
+    .color-group-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-ink-faded);
+      margin-bottom: 12px;
+    }
+
+    .color-swatch {
+      height: 80px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .color-swatch.light-text {
+      color: white;
+    }
+
+    .color-name {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .color-hex {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      opacity: 0.8;
+    }
+
+    /* Typography */
+    .type-specimen {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: var(--color-cream);
+      border-radius: 8px;
+    }
+
+    .type-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: 8px;
+    }
+
+    .type-display {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--color-ink);
+      line-height: 1.2;
+    }
+
+    .type-body {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      color: var(--color-ink-light);
+      line-height: 1.7;
+    }
+
+    .type-accent {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--color-ink-light);
+    }
+
+    .type-ui {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-ink);
+    }
+
+    /* Scale */
+    .scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-cream-dark);
+    }
+
+    .scale-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      color: var(--color-ink-faded);
+      width: 80px;
+    }
+
+    .scale-sample {
+      font-family: 'Playfair Display', serif;
+      color: var(--color-ink);
+    }
+
+    /* Buttons */
+    .button-row {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--color-sage);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-terracotta);
+      border: 1px solid var(--color-terracotta);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--color-gold) 0%, #8B7355 100%);
+      color: white;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-ink-light);
+    }
+
+    /* Badges */
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 4px 12px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 3px;
+    }
+
+    .badge-new { background: var(--color-sage); color: white; }
+    .badge-sale { background: var(--color-terracotta); color: white; }
+    .badge-rare { background: linear-gradient(135deg, var(--color-gold) 0%, #8B7355 100%); color: white; }
+    .badge-decade { background: transparent; color: var(--color-gold); border: 1px solid var(--color-gold-light); font-style: italic; }
+
+    /* Spacing */
+    .spacing-demo {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .spacing-box {
+      background: var(--color-sage-muted);
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 5px;
+    }
+
+    .spacing-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 9px;
+      color: var(--color-ink-faded);
+    }
+
+    /* Concept */
+    .concept-box {
+      background: var(--color-parchment);
+      padding: 30px;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .concept-box::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 30px;
+      height: 30px;
+      border-top: 2px solid var(--color-gold-light);
+      border-left: 2px solid var(--color-gold-light);
+    }
+
+    .concept-box::after {
+      content: '';
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 30px;
+      height: 30px;
+      border-bottom: 2px solid var(--color-gold-light);
+      border-right: 2px solid var(--color-gold-light);
+    }
+
+    .concept-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .concept-text {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--color-ink-light);
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-cream-dark);
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      color: var(--color-ink-faded);
+    }
+
+    /* Product Card Preview */
+    .card-preview {
+      background: var(--color-cream);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 220px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .card-image {
+      height: 280px;
+      background: linear-gradient(135deg, var(--color-parchment) 0%, var(--color-cream-warm) 100%);
+      position: relative;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+    }
+
+    .card-info {
+      padding: 16px;
+    }
+
+    .card-category {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--color-ink);
+      margin-bottom: 4px;
+    }
+
+    .card-era {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--color-ink-faded);
+      margin-bottom: 8px;
+    }
+
+    .card-price {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    /* Grid helpers */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: Cover + Colors -->
+  <div class="page">
+    <div class="header">
+      <h1>Cose <span>Vintage</span></h1>
+      <p class="subtitle">"La Brocante" Design System</p>
+      <p class="tagline">Mercatino Parigino Romantico</p>
+    </div>
+
+    <div class="section">
+      <div class="concept-box">
+        <h2 class="concept-title">Concept: La Brocante</h2>
+        <p class="concept-text">
+          Un'estetica che evoca i mercatini delle pulci parigini di Porte de Clignancourt.
+          Celebriamo l'imperfezione curata, la patina del tempo, e quella sensazione di
+          scoperta quando trovi un pezzo unico. Eleganza vissuta, non ostentata.
+          Calore mediterraneo con raffinatezza europea.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Palette Colori</h2>
+
+      <div class="color-group">
+        <p class="color-group-title">Primary - Verde Salvia</p>
+        <div class="color-grid">
+          <div class="color-swatch" style="background: #A8B89A;">
+            <span class="color-name">Sage Light</span>
+            <span class="color-hex">#A8B89A</span>
+          </div>
+          <div class="color-swatch" style="background: #8B9A7A;">
+            <span class="color-name">Sage</span>
+            <span class="color-hex">#8B9A7A</span>
+          </div>
+          <div class="color-swatch light-text" style="background: #6B7A5A;">
+            <span class="color-name">Sage Dark</span>
+            <span class="color-hex">#6B7A5A</span>
+          </div>
+          <div class="color-swatch" style="background: #C5CEB8;">
+            <span class="color-name">Sage Muted</span>
+            <span class="color-hex">#C5CEB8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-group">
+        <p class="color-group-title">Background - Crema & Pergamena</p>
+        <div class="color-grid">
+          <div class="color-swatch" style="background: #F7F3EB; border: 1px solid #E8E0D0;">
+            <span class="color-name">Cream</span>
+            <span class="color-hex">#F7F3EB</span>
+          </div>
+          <div class="color-swatch" style="background: #F2EBD9;">
+            <span class="color-name">Cream Warm</span>
+            <span class="color-hex">#F2EBD9</span>
+          </div>
+          <div class="color-swatch" style="background: #E8E0D0;">
+            <span class="color-name">Cream Dark</span>
+            <span class="color-hex">#E8E0D0</span>
+          </div>
+          <div class="color-swatch" style="background: #EDE5D8;">
+            <span class="color-name">Parchment</span>
+            <span class="color-hex">#EDE5D8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-group">
+        <p class="color-group-title">Accent - Terracotta & Oro</p>
+        <div class="color-grid">
+          <div class="color-swatch" style="background: #C4846C;">
+            <span class="color-name">Terracotta</span>
+            <span class="color-hex">#C4846C</span>
+          </div>
+          <div class="color-swatch" style="background: #A66B54;">
+            <span class="color-name">Terracotta Dark</span>
+            <span class="color-hex">#A66B54</span>
+          </div>
+          <div class="color-swatch" style="background: #B8976D;">
+            <span class="color-name">Gold</span>
+            <span class="color-hex">#B8976D</span>
+          </div>
+          <div class="color-swatch" style="background: #D4BC9A;">
+            <span class="color-name">Gold Light</span>
+            <span class="color-hex">#D4BC9A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-group">
+        <p class="color-group-title">Neutrals - Inchiostro Caldo</p>
+        <div class="color-grid">
+          <div class="color-swatch light-text" style="background: #3D352E;">
+            <span class="color-name">Ink</span>
+            <span class="color-hex">#3D352E</span>
+          </div>
+          <div class="color-swatch light-text" style="background: #5C534A;">
+            <span class="color-name">Ink Light</span>
+            <span class="color-hex">#5C534A</span>
+          </div>
+          <div class="color-swatch light-text" style="background: #7A6F64;">
+            <span class="color-name">Ink Faded</span>
+            <span class="color-hex">#7A6F64</span>
+          </div>
+          <div class="color-swatch light-text" style="background: #8B7355;">
+            <span class="color-name">Sepia</span>
+            <span class="color-hex">#8B7355</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>Cose Vintage - Design System</span>
+      <span>Pagina 1 di 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 2: Typography + Components -->
+  <div class="page">
+    <div class="section">
+      <h2 class="section-title">Typography</h2>
+
+      <div class="grid-2">
+        <div class="type-specimen">
+          <p class="type-label">Display - Playfair Display</p>
+          <p class="type-display">Ogni pezzo racconta una storia</p>
+        </div>
+
+        <div class="type-specimen">
+          <p class="type-label">Accent - Cormorant Garamond Italic</p>
+          <p class="type-accent">"La moda passa, lo stile resta"</p>
+        </div>
+      </div>
+
+      <div class="type-specimen">
+        <p class="type-label">Body - Lora</p>
+        <p class="type-body">Nel cuore di ogni mercatino parigino si nasconde un tesoro. Un vestito che ha danzato in una serata degli anni '70, una giacca che ha attraversato decenni con eleganza immutata. Cerchiamo pezzi che abbiano un'anima.</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="type-label">UI - Source Sans 3</p>
+        <p class="type-ui">Aggiungi al carrello &nbsp; | &nbsp; Scopri di piu &nbsp; | &nbsp; Newsletter &nbsp; | &nbsp; Nuovi arrivi</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Type Scale</h2>
+      <div class="scale-row">
+        <span class="scale-label">7XL - 72px</span>
+        <span class="scale-sample" style="font-size: 36px;">Cose Vintage</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">5XL - 48px</span>
+        <span class="scale-sample" style="font-size: 28px;">Ogni pezzo ha una storia</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">3XL - 30px</span>
+        <span class="scale-sample" style="font-size: 22px;">Nuovi Arrivi</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">XL - 20px</span>
+        <span class="scale-sample" style="font-size: 16px;">Blazer Doppiopetto Lana</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Base - 16px</span>
+        <span class="scale-sample" style="font-size: 14px;">Descrizione del prodotto</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Buttons</h2>
+      <div class="button-row">
+        <button class="btn btn-primary">Aggiungi al Carrello</button>
+        <button class="btn btn-secondary">Vedi Dettagli</button>
+        <button class="btn btn-gold">Iscriviti</button>
+        <button class="btn btn-ghost">Continua</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Badges</h2>
+      <div class="badge-row">
+        <span class="badge badge-new">Nuovo</span>
+        <span class="badge badge-sale">-30%</span>
+        <span class="badge badge-rare">Raro</span>
+        <span class="badge badge-decade">Anni '70</span>
+        <span class="badge badge-decade">Anni '80</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Spacing Scale</h2>
+      <div class="spacing-demo">
+        <div class="spacing-box" style="width: 16px; height: 40px;"><span class="spacing-label">4</span></div>
+        <div class="spacing-box" style="width: 24px; height: 40px;"><span class="spacing-label">6</span></div>
+        <div class="spacing-box" style="width: 32px; height: 40px;"><span class="spacing-label">8</span></div>
+        <div class="spacing-box" style="width: 48px; height: 40px;"><span class="spacing-label">12</span></div>
+        <div class="spacing-box" style="width: 64px; height: 40px;"><span class="spacing-label">16</span></div>
+        <div class="spacing-box" style="width: 80px; height: 40px;"><span class="spacing-label">20</span></div>
+        <div class="spacing-box" style="width: 96px; height: 40px;"><span class="spacing-label">24</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Product Card</h2>
+      <div class="card-preview">
+        <div class="card-image">
+          <span class="card-badge badge badge-new">Nuovo</span>
+        </div>
+        <div class="card-info">
+          <p class="card-category">Giacche</p>
+          <h3 class="card-title">Blazer Doppiopetto Lana</h3>
+          <p class="card-era">Anni '80 - Made in Italy</p>
+          <p class="card-price">85,00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>Cose Vintage - Design System</span>
+      <span>Pagina 2 di 2</span>
+    </div>
+  </div>
+
+</body>
+</html>
