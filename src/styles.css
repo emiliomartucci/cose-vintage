@@ -1309,16 +1309,16 @@ a:hover {
   flex-direction: column;
 }
 
-/* Atmospheric sky gradient - warm sunset to deep */
+/* Atmospheric sky gradient - cream to rosa to sage */
 .hero__sky {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
     #F7F3EB 0%,
-    #EDE5D8 15%,
-    #D8CCBA 35%,
-    #B8A68A 55%,
+    #EDDADA 20%,
+    #D6C4C4 40%,
+    #B8C4B0 55%,
     #8B9A7A 70%,
     #5C6B52 85%,
     var(--color-ink) 100%
