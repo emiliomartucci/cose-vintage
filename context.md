@@ -15,10 +15,12 @@
 ## Stack
 - **Frontend:** HTML5 + CSS3 + Vanilla JS
 - **Design System:** "La Brocante" (mercatino parigino)
-- **E-commerce:** Snipcart (dashboard per gestione prodotti)
+- **E-commerce:** Snipcart (checkout, pagamenti)
 - **Pagamenti:** Stripe + PayPal (via Snipcart)
 - **Hosting:** Cloudflare Pages (git-connected)
-- **Backend:** Nessuno (Snipcart gestisce tutto)
+- **Admin:** Cloudflare Workers + D1 + R2
+- **Database:** Cloudflare D1 (SQLite)
+- **Images:** Cloudflare R2 (object storage)
 
 ## Brand Identity
 
@@ -60,9 +62,80 @@ src/
 ├── llms.txt             # AI crawlers
 └── design-preview.html  # Preview componenti (dev)
 
+admin/
+├── src/
+│   ├── index.js         # Worker API HTTP
+│   ├── products.js      # CRUD prodotti
+│   ├── images.js        # Upload R2
+│   └── ui.js            # Admin UI HTML
+├── tests/
+│   ├── products.test.js # Test CRUD
+│   └── images.test.js   # Test upload
+├── scripts/
+│   ├── scrape-vinted.js # Scraper Vinted
+│   └── populate-admin.js # Popola admin
+├── schema.sql           # Schema D1
+├── wrangler.toml        # Config Cloudflare
+└── package.json
+
 output/
 ├── design-system-export.html  # Design system (print-ready)
 └── design-system.pdf          # Export PDF design system
+```
+
+## Admin Panel
+
+### URLs
+- **Admin UI:** https://cose-vintage-admin.emi-martucci.workers.dev
+- **API Base:** https://cose-vintage-admin.emi-martucci.workers.dev/api
+
+### Cloudflare Resources
+- **Worker:** cose-vintage-admin
+- **D1 Database:** cose-vintage-db (ID: 556587eb-0023-4a4a-99c1-e7162d7bd022)
+- **R2 Bucket:** cose-vintage-images
+
+### Authentication
+Basic Auth con password in `ADMIN_PASSWORD` env var (default: "changeme")
+
+### API Endpoints
+| Metodo | Endpoint | Descrizione | Auth |
+|--------|----------|-------------|------|
+| GET | /api/products | Lista prodotti (con filtri) | No |
+| POST | /api/products | Crea prodotto | Si |
+| GET | /api/products/:id | Dettaglio prodotto | No |
+| PUT | /api/products/:id | Aggiorna prodotto | Si |
+| DELETE | /api/products/:id | Elimina prodotto | Si |
+| GET | /api/products/:id/images | Lista immagini prodotto | No |
+| POST | /api/products/:id/images | Upload immagine | Si |
+| GET | /images/* | Serve immagini R2 | No |
+
+### Schema Prodotto
+```json
+{
+  "nome": "string (required)",
+  "prezzo": "number > 0 (required)",
+  "descrizione": "string",
+  "categoria": "giacche|vestiti|camicie|gonne|maglieria|accessori (required)",
+  "genere": "donna|uomo|unisex (required)",
+  "taglia": "string",
+  "epoca": "50|60|70|80|90|00|10|20",
+  "condizione": "eccellente|buona|usato",
+  "disponibile": "0|1"
+}
+```
+
+### Funzionalita Admin UI
+- CRUD prodotti completo
+- Upload multiplo immagini (drag & drop)
+- Galleria immagini con view, crop, remove
+- Imposta immagine principale
+- Filtri per categoria, genere, disponibilita
+- **Cropper.js** per editing immagini (zoom, rotate, flip, crop)
+
+### Deploy Admin
+```bash
+cd admin
+CLOUDFLARE_API_TOKEN=xxx npx wrangler deploy
 ```
 
 ## Setup Snipcart
@@ -90,14 +163,28 @@ Per passare a LIVE:
 ```
 
 ## Prossimi Step
+- [ ] Impostare password admin sicura (attuale: "changeme")
+- [x] Collegare shop.html per fetch prodotti da API admin
+- [x] Immagini servite da Worker (no R2 public URL necessario)
+- [ ] Upload foto prodotti reali via admin UI
 - [ ] Configurare dominio custom (opzionale)
-- [ ] Aggiungere prodotti reali in Snipcart
-- [ ] Inserire foto prodotti reali
 - [ ] Sostituire email/telefono placeholder
 - [ ] Setup Google Analytics
 - [ ] Passare a API key LIVE Snipcart
+- [ ] Implementare product.html per pagina prodotto singolo
 
 ## Recent Changes
+- 2026-01-13: shop.html ora fetch prodotti dinamicamente da API admin
+- 2026-01-13: Cropper.js integrato per editing immagini (zoom, rotate, flip)
+- 2026-01-13: Filtri dinamici con conteggi basati su prodotti reali
+- 2026-01-13: Gestione immagini completa (view, crop, remove, set primary)
+- 2026-01-13: Scraper Vinted aggiornato per tutte le foto (2-6 per prodotto)
+- 2026-01-13: Aggiunte opzioni epoca (50-20) e condizione (usato)
+- 2026-01-13: Admin deployato su Cloudflare Workers + D1 + R2
+- 2026-01-13: Scraper Vinted creato, 10 prodotti importati dal profilo Anna
+- 2026-01-13: Implementato sistema filtri shop.html (categoria, genere, taglia, prezzo)
+- 2026-01-13: Aggiunto pattern botanico + blob sfumati all'hero, ridotto padding top
+- 2026-01-13: Rifatto gradiente hero (cream→rosa→sage) senza marrone intermedio
 - 2026-01-13: Sostituito terracotta (#C4846C) con rosa antico (#CB8587) su richiesta cliente
 - 2026-01-12: Progetto creato
 - 2026-01-12: Design system "La Brocante" implementato

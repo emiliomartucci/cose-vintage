@@ -105,9 +105,15 @@ export default {
       }
     }
 
-    // API routes require authentication
+    // API routes
     if (path.startsWith('/api/')) {
-      if (!checkAuth(request, env)) {
+      // Public endpoints (no auth required)
+      const isPublicEndpoint =
+        (method === 'GET' && path === '/api/products') ||
+        (method === 'GET' && /^\/api\/products\/\d+$/.test(path)) ||
+        (method === 'GET' && /^\/api\/products\/\d+\/images$/.test(path));
+
+      if (!isPublicEndpoint && !checkAuth(request, env)) {
         return jsonResponse({ error: 'Unauthorized' }, 401, env);
       }
 
@@ -131,10 +137,11 @@ async function handleApiRequest(request, env, path, method) {
     if (path === '/api/products') {
       if (method === 'GET') {
         const url = new URL(request.url);
+        const disponibileParam = url.searchParams.get('disponibile');
         const filters = {
           categoria: url.searchParams.get('categoria'),
           genere: url.searchParams.get('genere'),
-          disponibile: url.searchParams.get('disponibile') === 'true' ? true : undefined,
+          disponibile: (disponibileParam === 'true' || disponibileParam === '1') ? true : undefined,
           epoca: url.searchParams.get('epoca')
         };
         // Remove undefined filters
