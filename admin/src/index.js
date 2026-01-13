@@ -87,6 +87,24 @@ export default {
       });
     }
 
+    // Serve images from R2 (public, no auth)
+    if (path.startsWith('/images/')) {
+      const key = path.replace('/images/', '');
+      try {
+        const object = await env.IMAGES.get(key);
+        if (!object) {
+          return new Response('Image not found', { status: 404 });
+        }
+        const headers = new Headers();
+        headers.set('Content-Type', object.httpMetadata?.contentType || 'image/webp');
+        headers.set('Cache-Control', 'public, max-age=31536000');
+        headers.set('Access-Control-Allow-Origin', '*');
+        return new Response(object.body, { headers });
+      } catch (error) {
+        return new Response('Error loading image', { status: 500 });
+      }
+    }
+
     // API routes require authentication
     if (path.startsWith('/api/')) {
       if (!checkAuth(request, env)) {

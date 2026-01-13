@@ -23,8 +23,8 @@ function generateImageKey(filename) {
  * Get public URL for an image key
  */
 export function getImageUrl(key, bucketPublicUrl = '') {
-  // In production, this would be the R2 public URL or custom domain
-  return `${bucketPublicUrl}/${key}`;
+  // Serve images via Worker /images/ endpoint
+  return `/images/${key}`;
 }
 
 /**

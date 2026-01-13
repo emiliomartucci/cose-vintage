@@ -324,6 +324,78 @@
       color: var(--color-ink-faded);
       margin-bottom: var(--space-6);
     }
+
+    /* Loading state */
+    .loading-state {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-16) var(--space-4);
+      gap: var(--space-4);
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--color-cream-dark);
+      border-top-color: var(--color-sage);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-state p {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-ink-faded);
+    }
+
+    /* Product card hover effects */
+    .product-card {
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-card__image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card__badge {
+      position: absolute;
+      top: var(--space-3);
+      left: var(--space-3);
+      background: var(--color-terracotta);
+      color: white;
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .product-card__condition {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      background: var(--color-sage);
+      color: white;
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+    }
   </style>
 </head>
 <body>
@@ -468,24 +540,44 @@
             <h3 class="filter-group__title">Epoca</h3>
             <div class="filter-options">
               <label class="filter-option">
-                <input type="checkbox" name="decade" value="60">
+                <input type="checkbox" name="epoca" value="50">
+                <span>Anni '50</span>
+                <span class="filter-option__count">(0)</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="epoca" value="60">
                 <span>Anni '60</span>
-                <span class="filter-option__count">(8)</span>
+                <span class="filter-option__count">(0)</span>
               </label>
               <label class="filter-option">
-                <input type="checkbox" name="decade" value="70">
+                <input type="checkbox" name="epoca" value="70">
                 <span>Anni '70</span>
-                <span class="filter-option__count">(15)</span>
+                <span class="filter-option__count">(0)</span>
               </label>
               <label class="filter-option">
-                <input type="checkbox" name="decade" value="80">
+                <input type="checkbox" name="epoca" value="80">
                 <span>Anni '80</span>
-                <span class="filter-option__count">(20)</span>
+                <span class="filter-option__count">(0)</span>
               </label>
               <label class="filter-option">
-                <input type="checkbox" name="decade" value="90">
+                <input type="checkbox" name="epoca" value="90">
                 <span>Anni '90</span>
-                <span class="filter-option__count">(11)</span>
+                <span class="filter-option__count">(0)</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="epoca" value="00">
+                <span>Anni 2000</span>
+                <span class="filter-option__count">(0)</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="epoca" value="10">
+                <span>Anni 2010</span>
+                <span class="filter-option__count">(0)</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="epoca" value="20">
+                <span>Anni 2020</span>
+                <span class="filter-option__count">(0)</span>
               </label>
             </div>
           </div>
@@ -524,10 +616,17 @@
               <label class="filter-option">
                 <input type="checkbox" name="condizione" value="eccellente">
                 <span>Eccellente</span>
+                <span class="filter-option__count">(0)</span>
               </label>
               <label class="filter-option">
                 <input type="checkbox" name="condizione" value="buona">
                 <span>Buona</span>
+                <span class="filter-option__count">(0)</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="condizione" value="usato">
+                <span>Usato</span>
+                <span class="filter-option__count">(0)</span>
               </label>
             </div>
           </div>
@@ -546,297 +645,36 @@
 
         <!-- Products Grid -->
         <div>
-          <div class="product-grid">
-            <!-- Product 1 -->
-            <article class="product-card" data-categoria="giacche" data-decade="80" data-taglia="m" data-genere="donna" data-prezzo="85" data-condizione="eccellente">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=533&fit=crop" alt="Blazer Doppiopetto Lana" class="product-card__image" loading="lazy">
-                <span class="product-card__badge badge badge-new">Nuovo</span>
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=blazer-lana-80" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="blazer-lana-80"
-                      data-item-name="Blazer Doppiopetto Lana"
-                      data-item-price="85"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '80 · Made in Italy · Taglia M"
-                      data-item-image="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400"
-                      data-item-categories="Giacche">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Giacche</span>
-                <h3 class="product-card__title"><a href="/product.html?id=blazer-lana-80">Blazer Doppiopetto Lana</a></h3>
-                <p class="product-card__era">Anni '80 · Made in Italy</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€85</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 2 -->
-            <article class="product-card" data-categoria="vestiti" data-decade="70" data-taglia="s" data-genere="donna" data-prezzo="95" data-condizione="buona">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=533&fit=crop" alt="Abito Seta Floreale" class="product-card__image" loading="lazy">
-                <span class="product-card__badge badge badge-sale">-30%</span>
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=abito-seta-70" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="abito-seta-70"
-                      data-item-name="Abito Seta Floreale"
-                      data-item-price="95"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '70 · Francia · Taglia S"
-                      data-item-image="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400"
-                      data-item-categories="Vestiti">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Vestiti</span>
-                <h3 class="product-card__title"><a href="/product.html?id=abito-seta-70">Abito Seta Floreale</a></h3>
-                <p class="product-card__era">Anni '70 · Francia</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€95</span>
-                  <span class="product-card__price-original">€135</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 3 -->
-            <article class="product-card" data-categoria="giacche" data-decade="60" data-taglia="l" data-genere="uomo" data-prezzo="145" data-condizione="eccellente">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=533&fit=crop" alt="Trench Gabardine" class="product-card__image" loading="lazy">
-                <span class="product-card__badge badge badge-rare">Raro</span>
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=trench-60" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="trench-60"
-                      data-item-name="Trench Gabardine Classico"
-                      data-item-price="145"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '60 · Inghilterra · Taglia L"
-                      data-item-image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"
-                      data-item-categories="Giacche">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Giacche</span>
-                <h3 class="product-card__title"><a href="/product.html?id=trench-60">Trench Gabardine Classico</a></h3>
-                <p class="product-card__era">Anni '60 · Inghilterra</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€145</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 4 -->
-            <article class="product-card" data-categoria="accessori" data-decade="70" data-taglia="unica" data-genere="unisex" data-prezzo="180" data-condizione="eccellente">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=533&fit=crop" alt="Borsa Pelle Intrecciata" class="product-card__image" loading="lazy">
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=borsa-pelle" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="borsa-pelle"
-                      data-item-name="Borsa Pelle Intrecciata"
-                      data-item-price="180"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '70 · Artigianale"
-                      data-item-image="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400"
-                      data-item-categories="Accessori">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Accessori</span>
-                <h3 class="product-card__title"><a href="/product.html?id=borsa-pelle">Borsa Pelle Intrecciata</a></h3>
-                <p class="product-card__era">Anni '70 · Artigianale</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€180</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 5 -->
-            <article class="product-card" data-categoria="camicie" data-decade="80" data-taglia="m" data-genere="donna" data-prezzo="65" data-condizione="buona">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=533&fit=crop" alt="Camicia Seta Stampata" class="product-card__image" loading="lazy">
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=camicia-seta" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="camicia-seta"
-                      data-item-name="Camicia Seta Stampata"
-                      data-item-price="65"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '80 · Francia · Taglia M"
-                      data-item-image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400"
-                      data-item-categories="Camicie">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Camicie</span>
-                <h3 class="product-card__title"><a href="/product.html?id=camicia-seta">Camicia Seta Stampata</a></h3>
-                <p class="product-card__era">Anni '80 · Francia</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€65</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 6 -->
-            <article class="product-card" data-categoria="gonne" data-decade="70" data-taglia="s" data-genere="donna" data-prezzo="55" data-condizione="eccellente">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=400&h=533&fit=crop" alt="Gonna Plissettata" class="product-card__image" loading="lazy">
-                <span class="product-card__badge badge badge-new">Nuovo</span>
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=gonna-plisse" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="gonna-plisse"
-                      data-item-name="Gonna Plissettata Midi"
-                      data-item-price="55"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '70 · Made in Italy · Taglia S"
-                      data-item-image="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=400"
-                      data-item-categories="Gonne">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Gonne</span>
-                <h3 class="product-card__title"><a href="/product.html?id=gonna-plisse">Gonna Plissettata Midi</a></h3>
-                <p class="product-card__era">Anni '70 · Made in Italy</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€55</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 7 -->
-            <article class="product-card" data-categoria="maglieria" data-decade="90" data-taglia="m" data-genere="uomo" data-prezzo="75" data-condizione="eccellente">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=533&fit=crop" alt="Cardigan Lana Merino" class="product-card__image" loading="lazy">
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=cardigan-lana" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="cardigan-lana"
-                      data-item-name="Cardigan Lana Merino"
-                      data-item-price="75"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '90 · Scozia · Taglia M"
-                      data-item-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400"
-                      data-item-categories="Maglieria">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Maglieria</span>
-                <h3 class="product-card__title"><a href="/product.html?id=cardigan-lana">Cardigan Lana Merino</a></h3>
-                <p class="product-card__era">Anni '90 · Scozia</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€75</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product 8 -->
-            <article class="product-card" data-categoria="accessori" data-decade="80" data-taglia="unica" data-genere="unisex" data-prezzo="120" data-condizione="eccellente">
-              <div class="product-card__image-wrapper">
-                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=533&fit=crop" alt="Foulard Seta Hermes" class="product-card__image" loading="lazy">
-                <span class="product-card__badge badge badge-rare">Raro</span>
-                <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                  </svg>
-                </button>
-                <div class="product-card__overlay">
-                  <div class="product-card__actions">
-                    <a href="/product.html?id=foulard-seta" class="btn btn-primary btn-sm">Scopri</a>
-                    <button class="btn btn-secondary btn-sm snipcart-add-item"
-                      data-item-id="foulard-seta"
-                      data-item-name="Foulard Seta Vintage"
-                      data-item-price="120"
-                      data-item-url="/shop.html"
-                      data-item-description="Anni '80 · Francia"
-                      data-item-image="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400"
-                      data-item-categories="Accessori">
-                      + Carrello
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <span class="product-card__category">Accessori</span>
-                <h3 class="product-card__title"><a href="/product.html?id=foulard-seta">Foulard Seta Vintage</a></h3>
-                <p class="product-card__era">Anni '80 · Francia</p>
-                <div class="product-card__price">
-                  <span class="product-card__price-current">€120</span>
-                </div>
-              </div>
-            </article>
+          <div class="product-grid" id="products-grid">
+            <!-- Loading state -->
+            <div class="loading-state" id="loading-state">
+              <div class="loading-spinner"></div>
+              <p>Caricamento prodotti...</p>
+            </div>
           </div>
 
-          <!-- Load more -->
-          <div style="text-align: center; margin-top: var(--space-12);">
-            <button class="btn btn-secondary btn-lg">Carica Altri</button>
+          <!-- Empty state -->
+          <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-state__icon">
+              <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">Nessun prodotto trovato</h3>
+            <p class="empty-state__text">Prova a modificare i filtri di ricerca</p>
+            <button class="btn btn-primary" onclick="clearFilters()">Rimuovi filtri</button>
+          </div>
+
+          <!-- Error state -->
+          <div class="empty-state" id="error-state" style="display: none;">
+            <div class="empty-state__icon">
+              <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">Errore di caricamento</h3>
+            <p class="empty-state__text" id="error-message">Si e verificato un errore</p>
+            <button class="btn btn-primary" onclick="loadProducts()">Riprova</button>
           </div>
         </div>
       </div>
@@ -898,5 +736,320 @@
 
   <!-- Main JS -->
   <script src="script.js"></script>
+
+  <!-- Shop Products -->
+  <script>
+    // v1.0.0 - 2026-01-13 - Dynamic product loading from admin API
+    const API_BASE = 'https://cose-vintage-admin.emi-martucci.workers.dev';
+
+    let allProducts = [];
+    let filteredProducts = [];
+
+    // State
+    const filters = {
+      genere: [],
+      categoria: [],
+      epoca: [],
+      taglia: [],
+      condizione: [],
+      prezzoMin: null,
+      prezzoMax: null,
+      sort: 'newest'
+    };
+
+    // DOM elements
+    const productsGrid = document.getElementById('products-grid');
+    const loadingState = document.getElementById('loading-state');
+    const emptyState = document.getElementById('empty-state');
+    const errorState = document.getElementById('error-state');
+    const shopCount = document.querySelector('.shop-count');
+    const sortSelect = document.getElementById('sort');
+
+    // Format price
+    function formatPrice(price) {
+      return new Intl.NumberFormat('it-IT', {
+        style: 'currency',
+        currency: 'EUR'
+      }).format(price);
+    }
+
+    // Get full image URL
+    function getImageUrl(url) {
+      if (!url) return 'https://placehold.co/400x500/F7F3EB/8B9A7A?text=No+Image';
+      if (url.startsWith('http')) return url;
+      return `${API_BASE}${url}`;
+    }
+
+    // Render single product card
+    function renderProductCard(product) {
+      const imageUrl = getImageUrl(product.primary_image);
+      const epocaLabel = product.epoca ? `Anni '${product.epoca}` : '';
+      const isNew = new Date(product.created_at) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+
+      return `
+        <article class="product-card">
+          <a href="product.html?id=${product.id}" class="product-card__image">
+            <img src="${imageUrl}" alt="${product.nome}" loading="lazy">
+            ${isNew ? '<span class="product-card__badge">Nuovo</span>' : ''}
+            ${product.condizione ? `<span class="product-card__condition">${product.condizione}</span>` : ''}
+          </a>
+          <div class="product-card__info">
+            <h3 class="product-card__title">
+              <a href="product.html?id=${product.id}">${product.nome}</a>
+            </h3>
+            <p class="product-card__meta">
+              ${product.categoria ? product.categoria.charAt(0).toUpperCase() + product.categoria.slice(1) : ''}
+              ${epocaLabel ? ` · ${epocaLabel}` : ''}
+              ${product.taglia ? ` · Taglia ${product.taglia.toUpperCase()}` : ''}
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">${formatPrice(product.prezzo)}</span>
+              <button
+                class="btn btn-primary btn-sm snipcart-add-item"
+                data-item-id="${product.id}"
+                data-item-name="${product.nome}"
+                data-item-price="${product.prezzo}"
+                data-item-url="/shop.html"
+                data-item-image="${imageUrl}"
+                data-item-description="${product.descrizione || ''}"
+                ${product.taglia ? `data-item-custom1-name="Taglia" data-item-custom1-value="${product.taglia}"` : ''}
+              >
+                Aggiungi
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Render all products
+    function renderProducts() {
+      loadingState.style.display = 'none';
+      errorState.style.display = 'none';
+
+      if (filteredProducts.length === 0) {
+        productsGrid.innerHTML = '';
+        emptyState.style.display = 'block';
+        shopCount.textContent = '0 pezzi disponibili';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      shopCount.textContent = `${filteredProducts.length} ${filteredProducts.length === 1 ? 'pezzo disponibile' : 'pezzi disponibili'}`;
+
+      productsGrid.innerHTML = filteredProducts.map(renderProductCard).join('');
+    }
+
+    // Apply filters
+    function applyFilters() {
+      filteredProducts = allProducts.filter(product => {
+        // Disponibilita
+        if (!product.disponibile) return false;
+
+        // Genere
+        if (filters.genere.length > 0 && !filters.genere.includes(product.genere)) return false;
+
+        // Categoria
+        if (filters.categoria.length > 0 && !filters.categoria.includes(product.categoria)) return false;
+
+        // Epoca
+        if (filters.epoca.length > 0 && !filters.epoca.includes(product.epoca)) return false;
+
+        // Taglia
+        if (filters.taglia.length > 0) {
+          const productTaglia = (product.taglia || '').toLowerCase();
+          if (!filters.taglia.some(t => productTaglia.includes(t.toLowerCase()))) return false;
+        }
+
+        // Condizione
+        if (filters.condizione.length > 0 && !filters.condizione.includes(product.condizione)) return false;
+
+        // Prezzo
+        if (filters.prezzoMin !== null && product.prezzo < filters.prezzoMin) return false;
+        if (filters.prezzoMax !== null && product.prezzo > filters.prezzoMax) return false;
+
+        return true;
+      });
+
+      // Sort
+      switch (filters.sort) {
+        case 'price-asc':
+          filteredProducts.sort((a, b) => a.prezzo - b.prezzo);
+          break;
+        case 'price-desc':
+          filteredProducts.sort((a, b) => b.prezzo - a.prezzo);
+          break;
+        case 'name':
+          filteredProducts.sort((a, b) => a.nome.localeCompare(b.nome));
+          break;
+        case 'newest':
+        default:
+          filteredProducts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      }
+
+      renderProducts();
+    }
+
+    // Clear all filters
+    function clearFilters() {
+      filters.genere = [];
+      filters.categoria = [];
+      filters.epoca = [];
+      filters.taglia = [];
+      filters.condizione = [];
+      filters.prezzoMin = null;
+      filters.prezzoMax = null;
+
+      // Reset checkboxes
+      document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+      // Reset price inputs
+      document.querySelectorAll('.price-range input').forEach(input => input.value = '');
+
+      applyFilters();
+    }
+
+    // Setup filter listeners
+    function setupFilters() {
+      // Checkbox filters
+      document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          const filterName = checkbox.name;
+          const value = checkbox.value;
+
+          if (checkbox.checked) {
+            if (!filters[filterName]) filters[filterName] = [];
+            filters[filterName].push(value);
+          } else {
+            filters[filterName] = filters[filterName].filter(v => v !== value);
+          }
+
+          applyFilters();
+        });
+      });
+
+      // Price range
+      const priceInputs = document.querySelectorAll('.price-range input');
+      if (priceInputs.length >= 2) {
+        priceInputs[0].addEventListener('change', (e) => {
+          filters.prezzoMin = e.target.value ? parseFloat(e.target.value) : null;
+          applyFilters();
+        });
+        priceInputs[1].addEventListener('change', (e) => {
+          filters.prezzoMax = e.target.value ? parseFloat(e.target.value) : null;
+          applyFilters();
+        });
+      }
+
+      // Sort
+      sortSelect.addEventListener('change', (e) => {
+        filters.sort = e.target.value;
+        applyFilters();
+      });
+
+      // Clear filters button
+      document.querySelector('.filters__clear').addEventListener('click', clearFilters);
+
+      // Mobile filter toggle
+      const filterToggle = document.querySelector('.filter-toggle');
+      const filterPanel = document.querySelector('.filter-panel');
+      const filterClose = document.querySelector('.filters__close');
+
+      if (filterToggle && filterPanel) {
+        filterToggle.addEventListener('click', () => {
+          filterPanel.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      if (filterClose && filterPanel) {
+        filterClose.addEventListener('click', () => {
+          filterPanel.classList.remove('is-open');
+          document.body.style.overflow = '';
+        });
+      }
+    }
+
+    // Update filter counts based on available products
+    function updateFilterCounts() {
+      const counts = {
+        genere: {},
+        categoria: {},
+        epoca: {},
+        taglia: {},
+        condizione: {}
+      };
+
+      allProducts.filter(p => p.disponibile).forEach(product => {
+        if (product.genere) counts.genere[product.genere] = (counts.genere[product.genere] || 0) + 1;
+        if (product.categoria) counts.categoria[product.categoria] = (counts.categoria[product.categoria] || 0) + 1;
+        if (product.epoca) counts.epoca[product.epoca] = (counts.epoca[product.epoca] || 0) + 1;
+        if (product.condizione) counts.condizione[product.condizione] = (counts.condizione[product.condizione] || 0) + 1;
+      });
+
+      // Update count badges
+      document.querySelectorAll('.filter-option').forEach(option => {
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        if (!checkbox) return;
+
+        const filterName = checkbox.name === 'decade' ? 'epoca' : checkbox.name;
+        const value = checkbox.value;
+        const count = counts[filterName]?.[value] || 0;
+
+        let countBadge = option.querySelector('.filter-option__count');
+        if (countBadge) {
+          countBadge.textContent = `(${count})`;
+        }
+      });
+    }
+
+    // Load products from API
+    async function loadProducts() {
+      loadingState.style.display = 'flex';
+      emptyState.style.display = 'none';
+      errorState.style.display = 'none';
+      productsGrid.innerHTML = '';
+      productsGrid.appendChild(loadingState);
+
+      try {
+        const response = await fetch(`${API_BASE}/api/products?disponibile=1`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        allProducts = data.products || [];
+        filteredProducts = [...allProducts];
+
+        // Check URL params for pre-filters
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('filter') === 'nuovi') {
+          filters.sort = 'newest';
+          sortSelect.value = 'newest';
+        }
+        if (urlParams.get('categoria')) {
+          filters.categoria = [urlParams.get('categoria')];
+          const checkbox = document.querySelector(`input[name="categoria"][value="${urlParams.get('categoria')}"]`);
+          if (checkbox) checkbox.checked = true;
+        }
+
+        updateFilterCounts();
+        applyFilters();
+
+      } catch (error) {
+        console.error('Error loading products:', error);
+        loadingState.style.display = 'none';
+        errorState.style.display = 'block';
+        document.getElementById('error-message').textContent = 'Impossibile caricare i prodotti. Riprova tra poco.';
+      }
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      setupFilters();
+      loadProducts();
+    });
+  </script>
 </body>
 </html>

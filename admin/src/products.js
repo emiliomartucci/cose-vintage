@@ -8,8 +8,8 @@
 // Valid options for validation
 const VALID_CATEGORIE = ['giacche', 'vestiti', 'camicie', 'gonne', 'maglieria', 'accessori'];
 const VALID_GENERI = ['donna', 'uomo', 'unisex'];
-const VALID_CONDIZIONI = ['eccellente', 'buona'];
-const VALID_EPOCHE = ['60', '70', '80', '90'];
+const VALID_CONDIZIONI = ['eccellente', 'buona', 'usato'];
+const VALID_EPOCHE = ['50', '60', '70', '80', '90', '00', '10', '20'];
 
 /**
  * Validate product data
@@ -104,30 +104,35 @@ export async function createProduct(db, data) {
  */
 export async function getProducts(db, filters = {}) {
   try {
-    let sql = 'SELECT * FROM products WHERE 1=1';
+    let sql = `
+      SELECT p.*, pi.url as image
+      FROM products p
+      LEFT JOIN product_images pi ON p.id = pi.product_id AND pi.is_primary = 1
+      WHERE 1=1
+    `;
     const params = [];
 
     if (filters.categoria) {
-      sql += ' AND categoria = ?';
+      sql += ' AND p.categoria = ?';
       params.push(filters.categoria.toLowerCase());
     }
 
     if (filters.genere) {
-      sql += ' AND genere = ?';
+      sql += ' AND p.genere = ?';
       params.push(filters.genere.toLowerCase());
     }
 
     if (filters.disponibile !== undefined) {
-      sql += ' AND disponibile = ?';
+      sql += ' AND p.disponibile = ?';
       params.push(filters.disponibile ? 1 : 0);
     }
 
     if (filters.epoca) {
-      sql += ' AND epoca = ?';
+      sql += ' AND p.epoca = ?';
       params.push(filters.epoca);
     }
 
-    sql += ' ORDER BY created_at DESC';
+    sql += ' ORDER BY p.created_at DESC';
 
     const stmt = db.prepare(sql);
     const result = params.length > 0

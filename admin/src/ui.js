@@ -12,6 +12,8 @@ export function renderAdminPage() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - Cose Vintage</title>
+  <!-- Cropper.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
   <style>
     :root {
       --cream: #F7F3EB;
@@ -265,6 +267,212 @@ export function renderAdminPage() {
       justify-content: center;
     }
 
+    /* Existing Images Gallery */
+    .existing-images {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .existing-images__title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .existing-images__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+
+    .existing-image {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: var(--background);
+      border: 2px solid transparent;
+    }
+
+    .existing-image.primary {
+      border-color: var(--primary);
+    }
+
+    .existing-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .existing-image__badge {
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+    }
+
+    .existing-image__actions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      gap: 0.25rem;
+      padding: 0.375rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .existing-image:hover .existing-image__actions {
+      opacity: 1;
+    }
+
+    .existing-image__btn {
+      flex: 1;
+      padding: 0.375rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: background 0.2s;
+    }
+
+    .existing-image__btn--view {
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .existing-image__btn--primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .existing-image__btn--delete {
+      background: var(--error);
+      color: var(--white);
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal__content {
+      max-width: 90vw;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .modal__image {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 0.5rem;
+    }
+
+    .modal__close {
+      position: absolute;
+      top: -2rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal__actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    /* Crop Container - Cropper.js */
+    .crop-container {
+      max-width: 100%;
+      max-height: 60vh;
+    }
+
+    .crop-container img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .crop-toolbar {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .crop-toolbar button {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      border-radius: 0.375rem;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.2s;
+    }
+
+    .crop-toolbar button:hover {
+      background: var(--border);
+    }
+
+    .crop-toolbar button.active {
+      background: var(--sage);
+      color: var(--white);
+      border-color: var(--sage);
+    }
+
+    .crop-toolbar .separator {
+      width: 1px;
+      background: var(--border);
+      margin: 0 0.25rem;
+    }
+
+    /* Cropper.js customizations */
+    .cropper-view-box,
+    .cropper-face {
+      border-radius: 0;
+    }
+
+    .cropper-line {
+      background-color: var(--sage);
+    }
+
+    .cropper-point {
+      background-color: var(--sage);
+    }
+
+    .cropper-modal {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
     /* Products Table */
     .products-grid {
       display: grid;
@@ -511,17 +719,22 @@ export function renderAdminPage() {
               <label class="form-label">Epoca</label>
               <select id="epoca" class="form-select">
                 <option value="">Seleziona...</option>
+                <option value="50">Anni '50</option>
                 <option value="60">Anni '60</option>
                 <option value="70">Anni '70</option>
                 <option value="80">Anni '80</option>
                 <option value="90">Anni '90</option>
+                <option value="00">Anni 2000</option>
+                <option value="10">Anni 2010</option>
+                <option value="20">Anni 2020</option>
               </select>
             </div>
             <div class="form-group">
               <label class="form-label">Condizione</label>
               <select id="condizione" class="form-select">
-                <option value="buona">Buona</option>
                 <option value="eccellente">Eccellente</option>
+                <option value="buona">Buona</option>
+                <option value="usato">Usato</option>
               </select>
             </div>
           </div>
@@ -542,6 +755,12 @@ export function renderAdminPage() {
               <div class="upload-area__text">Clicca o trascina le foto qui</div>
             </div>
             <div class="image-preview" id="image-preview"></div>
+
+            <!-- Existing Images (shown when editing) -->
+            <div class="existing-images" id="existing-images" style="display: none;">
+              <div class="existing-images__title">Foto caricate</div>
+              <div class="existing-images__grid" id="existing-images-grid"></div>
+            </div>
           </div>
 
           <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
@@ -553,12 +772,53 @@ export function renderAdminPage() {
     </section>
   </main>
 
+  <!-- Image Modal -->
+  <div class="modal" id="image-modal">
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeImageModal()">&times;</button>
+      <div id="modal-view-mode">
+        <img src="" alt="" class="modal__image" id="modal-image">
+        <div class="modal__actions">
+          <button class="btn btn-secondary" onclick="startCrop()">Ritaglia</button>
+          <button class="btn btn-primary" onclick="closeImageModal()">Chiudi</button>
+        </div>
+      </div>
+      <div id="modal-crop-mode" style="display: none;">
+        <div class="crop-container" id="crop-container">
+          <img id="crop-image" src="" alt="">
+        </div>
+        <div class="crop-toolbar">
+          <button onclick="cropperZoom(0.1)" title="Zoom In">🔍+</button>
+          <button onclick="cropperZoom(-0.1)" title="Zoom Out">🔍−</button>
+          <span class="separator"></span>
+          <button onclick="cropperRotate(-90)" title="Ruota sinistra">↺</button>
+          <button onclick="cropperRotate(90)" title="Ruota destra">↻</button>
+          <span class="separator"></span>
+          <button onclick="cropperFlip('horizontal')" title="Specchia orizzontale">↔</button>
+          <button onclick="cropperFlip('vertical')" title="Specchia verticale">↕</button>
+          <span class="separator"></span>
+          <button onclick="cropperReset()" title="Reset">⟲</button>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn-secondary" onclick="cancelCrop()">Annulla</button>
+          <button class="btn btn-primary" onclick="applyCrop()">Salva Ritaglio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cropper.js Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+
   <script>
     // State
     let authToken = localStorage.getItem('adminToken') || '';
     let products = [];
     let editingId = null;
     let uploadedImages = [];
+    let existingImages = [];
+    let currentImageForCrop = null;
+    let cropper = null;
 
     // API helper
     async function api(endpoint, options = {}) {
@@ -684,7 +944,192 @@ export function renderAdminPage() {
       document.getElementById('condizione').value = product.condizione || 'buona';
       document.getElementById('disponibile').checked = !!product.disponibile;
 
+      // Load existing images
+      await loadExistingImages(id);
+
       showTab('new');
+    }
+
+    async function loadExistingImages(productId) {
+      try {
+        const result = await api('/products/' + productId + '/images');
+        existingImages = result.images || [];
+        renderExistingImages();
+      } catch (error) {
+        console.error('Error loading images:', error);
+        existingImages = [];
+        renderExistingImages();
+      }
+    }
+
+    function renderExistingImages() {
+      const container = document.getElementById('existing-images');
+      const grid = document.getElementById('existing-images-grid');
+
+      if (existingImages.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+      grid.innerHTML = existingImages.map(img => \`
+        <div class="existing-image \${img.is_primary ? 'primary' : ''}" data-id="\${img.id}">
+          \${img.is_primary ? '<span class="existing-image__badge">Principale</span>' : ''}
+          <img src="\${img.url}" alt="" onclick="viewImage('\${img.url}', \${img.id})">
+          <div class="existing-image__actions">
+            <button class="existing-image__btn existing-image__btn--view" onclick="viewImage('\${img.url}', \${img.id})" title="Visualizza">👁</button>
+            \${!img.is_primary ? \`<button class="existing-image__btn existing-image__btn--primary" onclick="setAsPrimary(\${img.id})" title="Imposta principale">⭐</button>\` : ''}
+            <button class="existing-image__btn existing-image__btn--delete" onclick="deleteExistingImage(\${img.id})" title="Elimina">🗑</button>
+          </div>
+        </div>
+      \`).join('');
+    }
+
+    function viewImage(url, imageId) {
+      currentImageForCrop = { url, id: imageId };
+      document.getElementById('modal-image').src = url;
+      document.getElementById('modal-view-mode').style.display = 'block';
+      document.getElementById('modal-crop-mode').style.display = 'none';
+      document.getElementById('image-modal').classList.add('active');
+    }
+
+    function closeImageModal() {
+      document.getElementById('image-modal').classList.remove('active');
+      currentImageForCrop = null;
+      if (cropper) {
+        cropper.destroy();
+        cropper = null;
+      }
+    }
+
+    function startCrop() {
+      if (!currentImageForCrop) return;
+
+      document.getElementById('modal-view-mode').style.display = 'none';
+      document.getElementById('modal-crop-mode').style.display = 'block';
+
+      const cropImage = document.getElementById('crop-image');
+      cropImage.src = currentImageForCrop.url;
+
+      // Destroy existing cropper if any
+      if (cropper) {
+        cropper.destroy();
+      }
+
+      // Initialize Cropper.js
+      cropper = new Cropper(cropImage, {
+        aspectRatio: NaN, // Free aspect ratio
+        viewMode: 1,
+        dragMode: 'move',
+        autoCropArea: 0.8,
+        restore: false,
+        guides: true,
+        center: true,
+        highlight: true,
+        cropBoxMovable: true,
+        cropBoxResizable: true,
+        toggleDragModeOnDblclick: true,
+        background: true,
+        responsive: true,
+        checkCrossOrigin: true,
+        checkOrientation: true
+      });
+    }
+
+    // Cropper.js helper functions
+    function cropperZoom(ratio) {
+      if (cropper) cropper.zoom(ratio);
+    }
+
+    function cropperRotate(degree) {
+      if (cropper) cropper.rotate(degree);
+    }
+
+    function cropperFlip(direction) {
+      if (!cropper) return;
+      const data = cropper.getData();
+      if (direction === 'horizontal') {
+        cropper.scaleX(data.scaleX === -1 ? 1 : -1);
+      } else {
+        cropper.scaleY(data.scaleY === -1 ? 1 : -1);
+      }
+    }
+
+    function cropperReset() {
+      if (cropper) cropper.reset();
+    }
+
+    function cancelCrop() {
+      document.getElementById('modal-view-mode').style.display = 'block';
+      document.getElementById('modal-crop-mode').style.display = 'none';
+      if (cropper) {
+        cropper.destroy();
+        cropper = null;
+      }
+    }
+
+    async function applyCrop() {
+      if (!cropper || !currentImageForCrop) return;
+
+      try {
+        // Get cropped canvas
+        const canvas = cropper.getCroppedCanvas({
+          maxWidth: 1200,
+          maxHeight: 1200,
+          imageSmoothingEnabled: true,
+          imageSmoothingQuality: 'high'
+        });
+
+        if (!canvas) {
+          showAlert('Errore nel ritaglio', 'error');
+          return;
+        }
+
+        // Convert canvas to blob
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', 0.9));
+        const formData = new FormData();
+        formData.append('image', blob, 'cropped.webp');
+
+        // Upload new cropped image
+        const result = await api('/products/' + editingId + '/images', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (result.success) {
+          // Delete old image
+          await deleteExistingImage(currentImageForCrop.id, false);
+          closeImageModal();
+          await loadExistingImages(editingId);
+          showAlert('Immagine ritagliata salvata!');
+        }
+      } catch (error) {
+        showAlert('Errore durante il salvataggio: ' + error.message, 'error');
+      }
+    }
+
+    async function setAsPrimary(imageId) {
+      try {
+        await api('/products/' + editingId + '/images/' + imageId + '/primary', { method: 'PUT' });
+        await loadExistingImages(editingId);
+        loadProducts(); // Refresh product list to update thumbnails
+      } catch (error) {
+        showAlert('Errore: ' + error.message, 'error');
+      }
+    }
+
+    async function deleteExistingImage(imageId, reload = true) {
+      if (reload && !confirm('Eliminare questa immagine?')) return;
+
+      try {
+        await api('/images/' + imageId, { method: 'DELETE' });
+        if (reload) {
+          await loadExistingImages(editingId);
+          loadProducts();
+        }
+      } catch (error) {
+        if (reload) showAlert('Errore: ' + error.message, 'error');
+      }
     }
 
     async function deleteProduct(id) {
@@ -705,7 +1150,10 @@ export function renderAdminPage() {
       document.getElementById('product-id').value = '';
       document.getElementById('disponibile').checked = true;
       document.getElementById('image-preview').innerHTML = '';
+      document.getElementById('existing-images').style.display = 'none';
+      document.getElementById('existing-images-grid').innerHTML = '';
       uploadedImages = [];
+      existingImages = [];
     }
 
     // Form submission
