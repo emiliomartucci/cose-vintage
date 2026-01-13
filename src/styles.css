@@ -19,10 +19,10 @@
   --color-cream-dark: #E8E0D0;
   --color-parchment: #EDE5D8;
 
-  /* Accent: Terracotta Rosa - Calore mediterraneo */
-  --color-terracotta: #C4846C;
-  --color-terracotta-light: #D9A08A;
-  --color-terracotta-dark: #A66B54;
+  /* Accent: Rosa Antico - Eleganza romantica */
+  --color-terracotta: #CB8587;
+  --color-terracotta-light: #EDDADA;
+  --color-terracotta-dark: #B06B6E;
 
   /* Neutrals: Toni caldi, mai freddi */
   --color-ink: #3D352E;
@@ -1366,7 +1366,7 @@ a:hover {
   z-index: 10;
   max-width: 900px;
   margin: 0 auto;
-  padding: 10rem 2rem 6rem;
+  padding: 6rem 2rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1596,7 +1596,7 @@ a:hover {
 /* Responsive */
 @media (max-width: 1024px) {
   .hero__container {
-    padding: 8rem 2rem 5rem;
+    padding: 5rem 2rem 4rem;
   }
 
   .hero__floating {
@@ -1611,7 +1611,7 @@ a:hover {
 
 @media (max-width: 767px) {
   .hero__container {
-    padding: 7rem 1.5rem 3rem;
+    padding: 5rem 1.5rem 2rem;
   }
 
   .hero__title {

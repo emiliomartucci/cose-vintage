@@ -30,7 +30,7 @@
 |-------|--------|-----|
 | --color-sage | #8B9A7A | Primario, CTA, categorie |
 | --color-cream | #F7F3EB | Background principale |
-| --color-terracotta | #C4846C | Accento, link, badge sale |
+| --color-terracotta | #CB8587 | Accento, link, badge sale (Rosa Antico) |
 | --color-gold | #B8976D | Decorazioni luxury |
 | --color-ink | #3D352E | Testo principale |
 
@@ -98,6 +98,7 @@ Per passare a LIVE:
 - [ ] Passare a API key LIVE Snipcart
 
 ## Recent Changes
+- 2026-01-13: Sostituito terracotta (#C4846C) con rosa antico (#CB8587) su richiesta cliente
 - 2026-01-12: Progetto creato
 - 2026-01-12: Design system "La Brocante" implementato
 - 2026-01-12: Tutte le pagine implementate
