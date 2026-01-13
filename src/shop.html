@@ -782,7 +782,7 @@
 
     // Render single product card
     function renderProductCard(product) {
-      const imageUrl = getImageUrl(product.primary_image);
+      const imageUrl = getImageUrl(product.image);
       const epocaLabel = product.epoca ? `Anni '${product.epoca}` : '';
       const isNew = new Date(product.created_at) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
