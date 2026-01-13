@@ -174,6 +174,8 @@ Per passare a LIVE:
 - [ ] Implementare product.html per pagina prodotto singolo
 
 ## Recent Changes
+- 2026-01-13: Fix campo immagine (image vs primary_image) - shop funzionante
+- 2026-01-13: API products endpoint reso pubblico per frontend
 - 2026-01-13: shop.html ora fetch prodotti dinamicamente da API admin
 - 2026-01-13: Cropper.js integrato per editing immagini (zoom, rotate, flip)
 - 2026-01-13: Filtri dinamici con conteggi basati su prodotti reali
