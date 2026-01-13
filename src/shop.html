@@ -413,6 +413,25 @@
 
           <button class="filters__clear">Rimuovi tutti</button>
 
+          <!-- Genere -->
+          <div class="filter-group">
+            <h3 class="filter-group__title">Genere</h3>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="checkbox" name="genere" value="donna">
+                <span>Donna</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="genere" value="uomo">
+                <span>Uomo</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="genere" value="unisex">
+                <span>Unisex</span>
+              </label>
+            </div>
+          </div>
+
           <!-- Categoria -->
           <div class="filter-group">
             <h3 class="filter-group__title">Categoria</h3>
@@ -420,17 +439,26 @@
               <label class="filter-option">
                 <input type="checkbox" name="categoria" value="giacche">
                 <span>Giacche</span>
-                <span class="filter-option__count">(24)</span>
               </label>
               <label class="filter-option">
                 <input type="checkbox" name="categoria" value="vestiti">
                 <span>Vestiti</span>
-                <span class="filter-option__count">(18)</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="categoria" value="camicie">
+                <span>Camicie</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="categoria" value="gonne">
+                <span>Gonne</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="categoria" value="maglieria">
+                <span>Maglieria</span>
               </label>
               <label class="filter-option">
                 <input type="checkbox" name="categoria" value="accessori">
                 <span>Accessori</span>
-                <span class="filter-option__count">(12)</span>
               </label>
             </div>
           </div>
@@ -520,7 +548,7 @@
         <div>
           <div class="product-grid">
             <!-- Product 1 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="giacche" data-decade="80" data-taglia="m" data-genere="donna" data-prezzo="85" data-condizione="eccellente">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=533&fit=crop" alt="Blazer Doppiopetto Lana" class="product-card__image" loading="lazy">
                 <span class="product-card__badge badge badge-new">Nuovo</span>
@@ -556,7 +584,7 @@
             </article>
 
             <!-- Product 2 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="vestiti" data-decade="70" data-taglia="s" data-genere="donna" data-prezzo="95" data-condizione="buona">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=533&fit=crop" alt="Abito Seta Floreale" class="product-card__image" loading="lazy">
                 <span class="product-card__badge badge badge-sale">-30%</span>
@@ -593,7 +621,7 @@
             </article>
 
             <!-- Product 3 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="giacche" data-decade="60" data-taglia="l" data-genere="uomo" data-prezzo="145" data-condizione="eccellente">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=533&fit=crop" alt="Trench Gabardine" class="product-card__image" loading="lazy">
                 <span class="product-card__badge badge badge-rare">Raro</span>
@@ -629,7 +657,7 @@
             </article>
 
             <!-- Product 4 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="accessori" data-decade="70" data-taglia="unica" data-genere="unisex" data-prezzo="180" data-condizione="eccellente">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=533&fit=crop" alt="Borsa Pelle Intrecciata" class="product-card__image" loading="lazy">
                 <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
@@ -664,7 +692,7 @@
             </article>
 
             <!-- Product 5 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="camicie" data-decade="80" data-taglia="m" data-genere="donna" data-prezzo="65" data-condizione="buona">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=533&fit=crop" alt="Camicia Seta Stampata" class="product-card__image" loading="lazy">
                 <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
@@ -699,7 +727,7 @@
             </article>
 
             <!-- Product 6 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="gonne" data-decade="70" data-taglia="s" data-genere="donna" data-prezzo="55" data-condizione="eccellente">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=400&h=533&fit=crop" alt="Gonna Plissettata" class="product-card__image" loading="lazy">
                 <span class="product-card__badge badge badge-new">Nuovo</span>
@@ -735,7 +763,7 @@
             </article>
 
             <!-- Product 7 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="maglieria" data-decade="90" data-taglia="m" data-genere="uomo" data-prezzo="75" data-condizione="eccellente">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=533&fit=crop" alt="Cardigan Lana Merino" class="product-card__image" loading="lazy">
                 <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
@@ -770,7 +798,7 @@
             </article>
 
             <!-- Product 8 -->
-            <article class="product-card">
+            <article class="product-card" data-categoria="accessori" data-decade="80" data-taglia="unica" data-genere="unisex" data-prezzo="120" data-condizione="eccellente">
               <div class="product-card__image-wrapper">
                 <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=533&fit=crop" alt="Foulard Seta Hermes" class="product-card__image" loading="lazy">
                 <span class="product-card__badge badge badge-rare">Raro</span>
