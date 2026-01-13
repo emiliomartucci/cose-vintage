@@ -1,0 +1,27 @@
+# Cose Vintage Admin - Cloudflare Workers Config
+# v1.0.0 - 2026-01-13 - Initial setup
+
+name = "cose-vintage-admin"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "cose-vintage-db"
+database_id = "placeholder-will-be-set-after-create"
+
+# R2 Storage for images
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "cose-vintage-images"
+
+# Environment variables
+[vars]
+ADMIN_PASSWORD = "changeme"
+CORS_ORIGIN = "https://cose-vintage.pages.dev"
+
+# Local development
+[dev]
+port = 8787
+local_protocol = "http"

@@ -1,0 +1,19 @@
+{
+  "name": "cose-vintage-admin",
+  "version": "1.0.0",
+  "description": "Admin panel for Cose Vintage - Cloudflare D1 + R2",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:init": "wrangler d1 execute cose-vintage-db --local --file=./schema.sql",
+    "db:init:remote": "wrangler d1 execute cose-vintage-db --remote --file=./schema.sql"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "vitest": "^1.2.0",
+    "wrangler": "^3.24.0"
+  }
+}
