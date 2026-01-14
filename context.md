@@ -166,14 +166,18 @@ Per passare a LIVE:
 - [ ] Impostare password admin sicura (attuale: "changeme")
 - [x] Collegare shop.html per fetch prodotti da API admin
 - [x] Immagini servite da Worker (no R2 public URL necessario)
+- [x] Implementare product.html dinamico
+- [x] Homepage dinamica (hero, nuovi arrivi, categorie)
 - [ ] Upload foto prodotti reali via admin UI
 - [ ] Configurare dominio custom (opzionale)
 - [ ] Sostituire email/telefono placeholder
 - [ ] Setup Google Analytics
 - [ ] Passare a API key LIVE Snipcart
-- [ ] Implementare product.html per pagina prodotto singolo
 
 ## Recent Changes
+- 2026-01-14: Homepage completamente dinamica (hero cards, nuovi arrivi, conteggi)
+- 2026-01-14: Product.html dinamico con galleria immagini e related products
+- 2026-01-14: Tutti i prodotti ora caricati da API admin
 - 2026-01-13: Fix campo immagine (image vs primary_image) - shop funzionante
 - 2026-01-13: API products endpoint reso pubblico per frontend
 - 2026-01-13: shop.html ora fetch prodotti dinamicamente da API admin
