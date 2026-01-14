@@ -298,26 +298,9 @@
         </div>
       </div>
 
-      <!-- Floating product cards -->
-      <div class="hero__floating">
-        <div class="hero__float-card">
-          <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=300&h=400&fit=crop" alt="Blazer vintage" loading="lazy">
-          <p class="hero__float-card-title">Blazer Lana</p>
-          <p class="hero__float-card-meta">Anni '80</p>
-          <p class="hero__float-card-price">85</p>
-        </div>
-        <div class="hero__float-card">
-          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&h=400&fit=crop" alt="Abito vintage" loading="lazy">
-          <p class="hero__float-card-title">Abito Seta</p>
-          <p class="hero__float-card-meta">Anni '70</p>
-          <p class="hero__float-card-price">95</p>
-        </div>
-        <div class="hero__float-card">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=400&fit=crop" alt="Trench vintage" loading="lazy">
-          <p class="hero__float-card-title">Trench Classico</p>
-          <p class="hero__float-card-meta">Anni '60</p>
-          <p class="hero__float-card-price">145</p>
-        </div>
+      <!-- Floating product cards - Dynamic -->
+      <div class="hero__floating" id="hero-floating-cards">
+        <!-- Loaded dynamically from API -->
       </div>
 
       <!-- Scroll indicator -->
@@ -329,126 +312,11 @@
       <div class="container">
         <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-10);">Nuovi Arrivi</h2>
 
-        <div class="product-grid">
-          <!-- Product 1 -->
-          <article class="product-card animate-on-scroll">
-            <div class="product-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=533&fit=crop" alt="Blazer Doppiopetto Lana" class="product-card__image" loading="lazy">
-              <span class="product-card__badge badge badge-new">Nuovo</span>
-              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </button>
-              <div class="product-card__overlay">
-                <div class="product-card__actions">
-                  <a href="/product.html?id=blazer-lana-80" class="btn btn-primary btn-sm">Scopri</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <span class="product-card__category">Giacche</span>
-              <h3 class="product-card__title"><a href="/product.html?id=blazer-lana-80">Blazer Doppiopetto Lana</a></h3>
-              <p class="product-card__era">Anni '80 · Made in Italy</p>
-              <div class="product-card__price">
-                <span class="product-card__price-current">€85</span>
-              </div>
-              <div class="product-card__condition">
-                <span class="product-card__condition-dot product-card__condition-dot--good"></span>
-                <span>Condizioni eccellenti</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 2 -->
-          <article class="product-card animate-on-scroll">
-            <div class="product-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=533&fit=crop" alt="Abito Seta Floreale" class="product-card__image" loading="lazy">
-              <span class="product-card__badge badge badge-sale">-30%</span>
-              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </button>
-              <div class="product-card__overlay">
-                <div class="product-card__actions">
-                  <a href="/product.html?id=abito-seta-70" class="btn btn-primary btn-sm">Scopri</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <span class="product-card__category">Vestiti</span>
-              <h3 class="product-card__title"><a href="/product.html?id=abito-seta-70">Abito Seta Floreale</a></h3>
-              <p class="product-card__era">Anni '70 · Francia</p>
-              <div class="product-card__price">
-                <span class="product-card__price-current">€95</span>
-                <span class="product-card__price-original">€135</span>
-              </div>
-              <div class="product-card__condition">
-                <span class="product-card__condition-dot product-card__condition-dot--good"></span>
-                <span>Condizioni eccellenti</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 3 -->
-          <article class="product-card animate-on-scroll">
-            <div class="product-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=533&fit=crop" alt="Trench Gabardine" class="product-card__image" loading="lazy">
-              <span class="product-card__badge badge badge-rare">Raro</span>
-              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </button>
-              <div class="product-card__overlay">
-                <div class="product-card__actions">
-                  <a href="/product.html?id=trench-60" class="btn btn-primary btn-sm">Scopri</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <span class="product-card__category">Giacche</span>
-              <h3 class="product-card__title"><a href="/product.html?id=trench-60">Trench Gabardine Classico</a></h3>
-              <p class="product-card__era">Anni '60 · Inghilterra</p>
-              <div class="product-card__price">
-                <span class="product-card__price-current">€145</span>
-              </div>
-              <div class="product-card__condition">
-                <span class="product-card__condition-dot product-card__condition-dot--good"></span>
-                <span>Condizioni eccellenti</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 4 -->
-          <article class="product-card animate-on-scroll">
-            <div class="product-card__image-wrapper">
-              <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=533&fit=crop" alt="Borsa Pelle Intrecciata" class="product-card__image" loading="lazy">
-              <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </button>
-              <div class="product-card__overlay">
-                <div class="product-card__actions">
-                  <a href="/product.html?id=borsa-pelle" class="btn btn-primary btn-sm">Scopri</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <span class="product-card__category">Accessori</span>
-              <h3 class="product-card__title"><a href="/product.html?id=borsa-pelle">Borsa Pelle Intrecciata</a></h3>
-              <p class="product-card__era">Anni '70 · Artigianale</p>
-              <div class="product-card__price">
-                <span class="product-card__price-current">€180</span>
-              </div>
-              <div class="product-card__condition">
-                <span class="product-card__condition-dot product-card__condition-dot--fair"></span>
-                <span>Buone condizioni</span>
-              </div>
-            </div>
-          </article>
+        <div class="product-grid" id="nuovi-arrivi-grid">
+          <!-- Products loaded dynamically from API -->
+          <div class="loading-state" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+            <p style="color: var(--color-ink-faded);">Caricamento...</p>
+          </div>
         </div>
 
         <div style="text-align: center; margin-top: var(--space-10);">
@@ -486,13 +354,13 @@
       <div class="container">
         <h2 class="title-decorated" style="font-size: var(--text-3xl); margin-bottom: var(--space-10);">Esplora per Categoria</h2>
 
-        <div class="categories-grid">
+        <div class="categories-grid" id="categories-grid">
           <a href="/shop.html?categoria=giacche" class="category-card animate-on-scroll">
             <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&h=625&fit=crop" alt="Giacche" class="category-card__image" loading="lazy">
             <div class="category-card__overlay">
               <div>
                 <h3 class="category-card__title">Giacche</h3>
-                <p class="category-card__count">24 pezzi</p>
+                <p class="category-card__count" id="count-giacche">0 pezzi</p>
               </div>
             </div>
           </a>
@@ -502,7 +370,7 @@
             <div class="category-card__overlay">
               <div>
                 <h3 class="category-card__title">Vestiti</h3>
-                <p class="category-card__count">18 pezzi</p>
+                <p class="category-card__count" id="count-vestiti">0 pezzi</p>
               </div>
             </div>
           </a>
@@ -512,7 +380,7 @@
             <div class="category-card__overlay">
               <div>
                 <h3 class="category-card__title">Accessori</h3>
-                <p class="category-card__count">12 pezzi</p>
+                <p class="category-card__count" id="count-accessori">0 pezzi</p>
               </div>
             </div>
           </a>
@@ -604,5 +472,132 @@
 
   <!-- Main JS -->
   <script src="script.js"></script>
+
+  <!-- Homepage Dynamic Products -->
+  <script>
+    // v1.0.0 - 2026-01-14 - Dynamic products for homepage
+    const API_BASE = 'https://cose-vintage-admin.emi-martucci.workers.dev';
+
+    function formatPrice(price) {
+      return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(price);
+    }
+
+    function getImageUrl(url) {
+      if (!url) return 'https://placehold.co/400x500/F7F3EB/8B9A7A?text=No+Image';
+      if (url.startsWith('http')) return url;
+      return `${API_BASE}${url}`;
+    }
+
+    function capitalize(str) {
+      return str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
+    }
+
+    function getConditionClass(condizione) {
+      return condizione === 'eccellente' ? 'good' : condizione === 'buona' ? 'fair' : 'fair';
+    }
+
+    // Render hero floating cards (3 products)
+    function renderHeroCards(products) {
+      const container = document.getElementById('hero-floating-cards');
+      if (!container) return;
+
+      const cards = products.slice(0, 3).map(p => `
+        <div class="hero__float-card">
+          <img src="${getImageUrl(p.image)}" alt="${p.nome}" loading="lazy">
+          <p class="hero__float-card-title">${p.nome.split(' ').slice(0, 2).join(' ')}</p>
+          <p class="hero__float-card-meta">${p.epoca ? `Anni '${p.epoca}` : ''}</p>
+          <p class="hero__float-card-price">${Math.round(p.prezzo)}</p>
+        </div>
+      `).join('');
+
+      container.innerHTML = cards;
+    }
+
+    // Render Nuovi Arrivi (4 products)
+    function renderNuoviArrivi(products) {
+      const container = document.getElementById('nuovi-arrivi-grid');
+      if (!container) return;
+
+      const cards = products.slice(0, 4).map(p => `
+        <article class="product-card animate-on-scroll">
+          <div class="product-card__image-wrapper">
+            <img src="${getImageUrl(p.image)}" alt="${p.nome}" class="product-card__image" loading="lazy">
+            <span class="product-card__badge badge badge-new">Nuovo</span>
+            <button class="product-card__wishlist" aria-label="Aggiungi ai preferiti">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+            <div class="product-card__overlay">
+              <div class="product-card__actions">
+                <a href="/product.html?id=${p.id}" class="btn btn-primary btn-sm">Scopri</a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <span class="product-card__category">${capitalize(p.categoria)}</span>
+            <h3 class="product-card__title"><a href="/product.html?id=${p.id}">${p.nome}</a></h3>
+            <p class="product-card__era">${p.epoca ? `Anni '${p.epoca}` : ''}${p.taglia ? ` · Taglia ${p.taglia.toUpperCase()}` : ''}</p>
+            <div class="product-card__price">
+              <span class="product-card__price-current">${formatPrice(p.prezzo)}</span>
+            </div>
+            <div class="product-card__condition">
+              <span class="product-card__condition-dot product-card__condition-dot--${getConditionClass(p.condizione)}"></span>
+              <span>${p.condizione === 'eccellente' ? 'Condizioni eccellenti' : p.condizione === 'buona' ? 'Buone condizioni' : 'Usato'}</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      container.innerHTML = cards;
+    }
+
+    // Update category counts
+    function updateCategoryCounts(products) {
+      const counts = {};
+      products.forEach(p => {
+        if (p.categoria) {
+          counts[p.categoria] = (counts[p.categoria] || 0) + 1;
+        }
+      });
+
+      // Update each category count
+      ['giacche', 'vestiti', 'accessori', 'camicie', 'gonne', 'maglieria'].forEach(cat => {
+        const el = document.getElementById(`count-${cat}`);
+        if (el) {
+          const count = counts[cat] || 0;
+          el.textContent = `${count} ${count === 1 ? 'pezzo' : 'pezzi'}`;
+        }
+      });
+    }
+
+    // Load products from API
+    async function loadHomeProducts() {
+      try {
+        const response = await fetch(`${API_BASE}/api/products?disponibile=1`);
+        if (!response.ok) throw new Error('Failed to load');
+
+        const data = await response.json();
+        const products = data.products || [];
+
+        // Sort by newest first
+        products.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+        // Render all sections
+        renderHeroCards(products);
+        renderNuoviArrivi(products);
+        updateCategoryCounts(products);
+
+      } catch (error) {
+        console.error('Error loading products:', error);
+        // Fallback: hide loading state
+        const grid = document.getElementById('nuovi-arrivi-grid');
+        if (grid) grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--color-ink-faded);">Prodotti non disponibili</p>';
+      }
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', loadHomeProducts);
+  </script>
 </body>
 </html>
